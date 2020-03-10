@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function favoriteBooks(){
+
+        return $this->belongsToMany('App\Book', 'user-favorite-book', 'user_id', 'book_id');
+
+    }
+    public function leasedBooks(){
+
+        return $this->belongsToMany('App\Book', 'book-leasedby-user', 'user_id', 'book_id')->withPivot('NumofDays','created_at');
+
+    }
+    public function userComments(){
+
+        return $this->belongsToMany('App\Book', 'user-comment-book', 'user_id', 'book_id')->withPivot('comment','rank','created_at');
+
+    }
 }
