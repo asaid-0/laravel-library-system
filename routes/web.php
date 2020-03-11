@@ -20,7 +20,17 @@ Route::get('/', function () {
 Route::get('/book', function () {
     return view('book');
 });
+Route::get('/test', function () {
+    return view('welcome');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admins', 'HomeController@admin')->name('admins');
+Route::get('/users', 'HomeController@user')->name('users');
+Route::get('/books', 'HomeController@book')->name('books');
+Route::get('/categories', 'HomeController@category')->name('categories');
+
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
