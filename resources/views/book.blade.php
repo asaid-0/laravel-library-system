@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/comments.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
@@ -79,10 +80,215 @@
 			
 		</header>
         
+
+
         
+        <div style="padding: 2rem" class="tg-middlecontainer">
+            <div class="container">
+                <div class="row book-details">
+                    <div style="display: inline-block; float: left">
+                        <img src="images/books/img-04.jpg" alt="title" />
+
+                    </div>
+                    <div style="display: inline-block; width: 50%; padding: 0 2rem">
+                            <div>
+                                <ul class="tg-bookscategories">
+                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
+                                    <i class="fa fa-heart love-btn"></i>
+                                </ul>
+                            </div>
+                            
+                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
+                            
+                            <div class="tg-booktitle">
+                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
+                            </div>
+                            
+
+                            <div>
+                                <p class="book-sample"><a href="javascript:void(0);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique error maxime, adipisci nihil saepe laudantium in quos corporis aliquid excepturi quisquam at culpa totam nemo perferendis, eaque harum consequuntur numquam?</a></p>
+                            </div>
+
+
+                            @for ($i = 0; $i < 5; ++$i)
+                                <i style="color: #fcd01e" class="fa fa-star{{ 4<=$i?'-o':'' }}" aria-hidden="true"></i>
+                            @endfor
+                            <div>
+                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                            </div>
+                            <span class="tg-bookprice">
+                                <ins>$25.18</ins>
+                                <del>$27.20</del>
+                            </span>
+                            
+                            
+                            <div>
+                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <em>Lease</em>
+                                </a>
+                            </div>
+
+                    </div>
+                    {{-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-sm-4">
+                            <img src="images/books/img-04.jpg" alt="title" />
+                        </div>
+                        <div class="book-image col-sm-8">
+                            sdgsdg
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tg-middlecontainer">
+            <div class="container">
 
 
 
+                <div class="post-outer-container">
+                    <div class="post-container">
+                        
+                        <div class="text-right">
+                            <a class="btn btn-primary" href="#reviews-anchor" id="open-review-box">Leave Comment</a>
+                        </div>
+                    
+                        <div class="row" id="post-review-box" style="display:none;">
+                            <div class="col-md-12">
+                                <form accept-charset="UTF-8" action="" method="post">
+                                    <input id="ratings-hidden" name="rating" type="hidden"> 
+                                    <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your comment here..." rows="5"></textarea>
+                    
+                                    <div class="text-right">
+                                        
+                                        <div class="stars">
+                                            <input type="radio" name="difficulty" id="difficulty-5" hidden>
+                                            <label for="difficulty-5">
+                                                <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star-o"></i>
+                                            </label>
+                                            <input type="radio" name="difficulty" id="difficulty-4" hidden>
+                                            <label for="difficulty-4">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star-o"></i>
+                                          </label>
+                                            <input type="radio" name="difficulty" id="difficulty-3" hidden>
+                                            <label for="difficulty-3">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star-o"></i>
+                                          </label>
+                                            <input type="radio" name="difficulty" id="difficulty-2" hidden>
+                                            <label for="difficulty-2">
+                                               <i class="fa fa-star"></i>
+                                             <i class="fa fa-star-o"></i>
+                                          </label>
+                                            <input type="radio" name="difficulty" id="difficulty-1" hidden checked>
+                                            <label for="difficulty-1">
+                                               <i class="fa fa-star"></i>
+                                          </label>
+                                        </div>
+
+
+
+                                        <a class="btn btn-danger btn-md" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                        <i style="padding-right: 1rem" class="fa fa-remove"></i>Cancel</a>
+                                        <button class="btn btn-success btn-md" type="submit"><i style="padding-right: 1rem" class="fa fa-comment"></i>Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+<div class="post-outer-container">
+    <div class="post-container">
+        <div class="post-details">
+            <img src="https://res.cloudinary.com/shivindera/image/upload/v1471087232/11224809_10153609813786294_5753779615144157442_n_zviyjh.jpg" alt="Shivi" class="user-image"/>
+            <div class="user-container">
+                @for ($i = 0; $i < 5; ++$i)
+                                <i style="color: #fcd01e" class="fa fa-star{{ 4<=$i?'-o':'' }}" aria-hidden="true"></i>
+                @endfor
+                <h3 class="user-container__user"><a href="javascript:;">Nitesh Kabra</a></h3>
+                
+                <div class="user-container__details">
+                    <span class="timing"><a href="javascript:;">Yesterday at 6:20 PM</a></span>
+                    {{-- <span class="delimiter"> · </span> --}}
+                    {{-- <span class="location"><a href="javascript:;">Goa</a></span> --}}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <p class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, eligendi voluptas. At veritatis modi beatae commodi assumenda! Itaque vel rem pariatur dolores eius eum? Optio corrupti consequuntur deserunt tenetur rem.</p>
+       
+    </div>
+</div>
+
+
+
+
+
+<div class="post-outer-container">
+    <div class="post-container">
+        <div class="post-details">
+            <img src="https://res.cloudinary.com/shivindera/image/upload/v1471087232/11224809_10153609813786294_5753779615144157442_n_zviyjh.jpg" alt="Shivi" class="user-image"/>
+            <div class="user-container">
+                @for ($i = 0; $i < 5; ++$i)
+                                <i style="color: #fcd01e" class="fa fa-star{{ 4<=$i?'-o':'' }}" aria-hidden="true"></i>
+                @endfor
+                <h3 class="user-container__user"><a href="javascript:;">Nitesh Kabra</a></h3>
+                
+                <div class="user-container__details">
+                    <span class="timing"><a href="javascript:;">Yesterday at 6:20 PM</a></span>
+                    {{-- <span class="delimiter"> · </span> --}}
+                    {{-- <span class="location"><a href="javascript:;">Goa</a></span> --}}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <p class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, eligendi voluptas. At veritatis modi beatae commodi assumenda! Itaque vel rem pariatur dolores eius eum? Optio corrupti consequuntur deserunt tenetur rem.</p>
+       
+    </div>
+</div>
+
+
+
+
+<div class="post-outer-container">
+    <div class="post-container">
+        <div class="post-details">
+            <img src="https://res.cloudinary.com/shivindera/image/upload/v1471087232/11224809_10153609813786294_5753779615144157442_n_zviyjh.jpg" alt="Shivi" class="user-image"/>
+            <div class="user-container">
+                @for ($i = 0; $i < 5; ++$i)
+                                <i style="color: #fcd01e" class="fa fa-star{{ 4<=$i?'-o':'' }}" aria-hidden="true"></i>
+                @endfor
+                <h3 class="user-container__user"><a href="javascript:;">Nitesh Kabra</a></h3>
+                
+                <div class="user-container__details">
+                    <span class="timing"><a href="javascript:;">Yesterday at 6:20 PM</a></span>
+                    {{-- <span class="delimiter"> · </span> --}}
+                    {{-- <span class="location"><a href="javascript:;">Goa</a></span> --}}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <p class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, eligendi voluptas. At veritatis modi beatae commodi assumenda! Itaque vel rem pariatur dolores eius eum? Optio corrupti consequuntur deserunt tenetur rem.</p>
+       
+    </div>
+</div>
+
+
+
+
+
+                
+
+            </div>
+        </div>
 
 
 
@@ -94,7 +300,77 @@
                 <li class="item">
                     <div class="col-md-12">
                         <div class="col-md-4 image-container">
-                            <img src="images/books/img-01.jpg" alt="title" />
+                            <img src="images/books/img-02.jpg" alt="title" />
+                        </div>
+                        
+                        <div class="col-md-8 book-info">
+                            <div>
+                                <ul class="tg-bookscategories">
+                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
+                            
+                            <div class="tg-booktitle">
+                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
+                            </div>
+                            
+                            <div>
+                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                            </div>
+                            
+                            <div>
+                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <em>Lease</em>
+                                </a>
+                            </div>
+                            
+
+                            
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="col-md-12">
+                        <div class="col-md-4 image-container">
+                            <img src="images/books/img-03.jpg" alt="title" />
+                        </div>
+                        
+                        <div class="col-md-8 book-info">
+                            <div>
+                                <ul class="tg-bookscategories">
+                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
+                            
+                            <div class="tg-booktitle">
+                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
+                            </div>
+                            
+                            <div>
+                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                            </div>
+                            
+                            <div>
+                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    <em>Lease</em>
+                                </a>
+                            </div>
+                            
+
+                            
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="col-md-12">
+                        <div class="col-md-4 image-container">
+                            <img src="images/books/img-04.jpg" alt="title" />
                         </div>
                         
                         <div class="col-md-8 book-info">
@@ -164,77 +440,7 @@
                 <li class="item">
                     <div class="col-md-12">
                         <div class="col-md-4 image-container">
-                            <img src="images/books/img-01.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
-
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-01.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
-
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-01.jpg" alt="title" />
+                            <img src="images/books/img-05.jpg" alt="title" />
                         </div>
                         
                         <div class="col-md-8 book-info">
@@ -300,6 +506,9 @@
 	<script src="js/gmap3.js"></script>
     <script src="js/main.js"></script> --}}
     <script src="js/slider.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="js/comment.js"></script>
 </body>
 </html>

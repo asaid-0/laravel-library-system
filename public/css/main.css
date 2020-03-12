@@ -848,14 +848,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	z-index: 2;
 	width: 100%;
 	float: left;
-	padding: 30px 0;
 	position: relative;
-}
-.tg-logo {
-	z-index:2;
-	float: left;
-	padding: 10px 0;
-	position:relative;
 }
 .tg-logo a { display: block; }
 .tg-logo a img { display: block; }
@@ -4139,3 +4132,21 @@ body.tg-comingsoonpage:before{
 .tg-comingsoonholder .tg-formnewsletter input{margin:0;}
 body.tg-comingsoonpage .tg-footer{border:0;}
 body.tg-comingsoonpage .tg-footerbar{position:static;}
+
+.book-details img{
+	height: 250px;
+}
+.book-sample a, .book-sample a:hover {
+	text-decoration: none;
+	color: #404040;
+}
+
+.love-btn {
+	float: right;
+	color: #7e7e7e;
+	font-size: 2.5rem;
+	cursor: pointer;
+}
+.love-btn:hover{
+	color: #f16945	;
+}

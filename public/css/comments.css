@@ -1,0 +1,211 @@
+.clear {
+	clear: both;
+}
+h3{
+    font-size: 20px;
+}
+
+a {
+	color: #365899;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.post-outer-container {
+	box-shadow: 0 1px 2px 2px #e5e7e8;
+	font-family: sans-serif;
+    font-size: 14px;
+    margin-bottom: 2rem;
+}
+
+.post-outer-container .post-container {
+	padding: 10px;
+}
+
+.post-outer-container .post-container .post-details .user-image {
+	float: left;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.post-outer-container .post-container .post-details .user-container {
+	overflow: hidden;
+	padding-left: 10px;
+}
+
+.post-outer-container .post-container .post-details .user-container .user-container__user {
+	margin: 0;
+}
+
+.post-outer-container .post-container .post-details .user-container .user-container__details {
+	vertical-align: middle;
+	font-size: 12px;
+	padding-top: 5px;
+	color: #9ca3a8;
+}
+
+.post-outer-container .post-container .post-details .user-container .user-container__details span a {
+	color: #9ca3a8;
+}
+
+.post-outer-container .post-container .post-content {
+	margin: 0;
+	padding: 10px 0;
+	color: #252c33;
+}
+
+.post-outer-container .post-container .post-actions {
+	border-top: 1px solid #e5e7e8;
+	padding-top: 10px;
+}
+
+.post-outer-container .post-container .post-actions span {
+	margin-right: 20px;
+}
+
+.post-outer-container .post-container .post-actions span a {
+	color: #7f7f7f;
+}
+
+.post-outer-container .post-container .post-actions span a:hover {
+	color: #ec1943;
+}
+
+.post-outer-container .post-container .post-actions span .fa {
+	font-size: 13px;
+	padding-right: 5px;
+}
+
+.post-outer-container .comments-section {
+	background-color: #f2f3f4;
+	padding: 10px;
+	padding-bottom: 1px;
+	display: none;
+}
+
+.post-outer-container .comments-section .comments-count {
+	padding-bottom: 10px;
+}
+
+.post-outer-container .comments-section .comments-count .comments-count__toggle {
+	float: right;
+	color: #9ca3a8;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.post-outer-container .comments-section .comments-count .comments-count__toggle .fa {
+	margin-left: 5px;
+	font-weight: 700;
+}
+
+.post-outer-container .comments-section .comments-count .comments-count__toggle:hover {
+	text-decoration: underline;
+}
+
+.post-outer-container .comments-section .comments-count .comments-count__toggle.comments-count__toggle--close .fa:before {
+	content: "\f107";
+}
+
+.post-outer-container .comments-section .comments-container {
+	max-height: 200px;
+	overflow: hidden;
+	transition: 300ms linear;
+}
+
+.post-outer-container .comments-section .comments-container.comments-container--hidden {
+	max-height: 0;
+}
+
+.post-outer-container .comments-section .comments-container hr {
+	margin: 0;
+	border: 0;
+	border-top: 1px solid #e5e7e8;
+}
+
+.post-outer-container .comments-section .comments-container .comment {
+	margin: 15px 0;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__user-image {
+	float: left;
+	width: 32px;
+	height: 32px;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details {
+	overflow: hidden;
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__text {
+	margin: 0;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__text .comment__user {
+	margin-right: 2px;
+	font-weight: 600;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__actions {
+	padding-top: 5px;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__actions span {
+	margin-right: 5px;
+	color: #ec1943;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__actions span a {
+	color: #ec1943;
+}
+
+.post-outer-container .comments-section .comments-container .comment .comment__details .comment__actions span .fa {
+	font-size: 11px;
+	padding-right: 5px;
+}
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+
+.stars {
+    direction: rtl;
+    margin: 1rem auto;
+
+}
+
+.stars label {
+    cursor: pointer;
+    padding: 0.04rem;
+    margin: 0;
+    display: inline;
+}
+
+.stars .fa {
+    color: #f1c40f;
+    font-size: 18px;
+}
+
+.stars input:not(:checked) ~ label:not([for="difficulty-1"]) > .fa-star {
+    display: none;
+}
+
+.stars label:hover > .fa-star-o,
+.stars label:hover ~ label > .fa-star-o,
+.stars input:checked ~ label > .fa-star-o {
+    display: none;
+}
+
+.stars label:hover > .fa-star,
+.stars label:hover ~ label > .fa-star,
+.stars input:checked ~ label > .fa-star {
+    display: inline-block !important;
+}
