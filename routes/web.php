@@ -21,10 +21,12 @@ Route::get('/test', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admins', 'HomeController@admin')->name('admins');
-Route::get('/users', 'HomeController@user')->name('users');
-Route::get('/books', 'HomeController@book')->name('books');
-Route::get('/categories', 'HomeController@category')->name('categories');
+Route::get('/admins', 'AdminController@admin')->name('admins');
+Route::get('/users', 'AdminController@user')->name('users');
+Route::get('/books', 'AdminController@book')->name('books');
+Route::get('/categories', 'AdminController@category')->name('categories');
+Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
+
 
 
 
