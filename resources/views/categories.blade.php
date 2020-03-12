@@ -23,13 +23,6 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
-
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -124,17 +117,20 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
+            <a href=""><button type="button" class="btn btn-primary" id="category">Add category</button></a>
             <table class="category-table">
                 <thead>
                     <tr>
                     <th>Category ID</th>
                     <th>Category name</th>
                     <th>No. of books</th>
+                    <th>Picture</th>
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -156,12 +152,6 @@
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
         </p>
         <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
         <a href="index.html#" class="go-top">
