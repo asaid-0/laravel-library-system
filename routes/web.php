@@ -14,9 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/book', function () {
+    return view('book');
+});
+Route::get('/test', function () {
     return view('welcome');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admins', 'AdminController@admin')->name('admins');
+Route::get('/users', 'AdminController@user')->name('users');
+Route::get('/books', 'AdminController@book')->name('books');
+Route::get('/categories', 'AdminController@category')->name('categories');
+Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
+
+
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
