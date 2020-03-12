@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/book', function () {
@@ -24,8 +24,10 @@ Route::get('/test', function () {
     return view('welcome');
 });
 
+Route::resource('userbooks', 'BookController');
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admins', 'AdminController@admin')->name('admins');
+// Route::get('/admins', 'AdminController@admin')->name('admins');
 Route::get('/users', 'AdminController@user')->name('users');
 Route::get('/books', 'AdminController@book')->name('books');
 Route::get('/categories', 'AdminController@category')->name('categories');
