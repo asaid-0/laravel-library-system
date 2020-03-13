@@ -166,10 +166,19 @@
 														<span class="tg-bookprice">
 															<ins>${!! $book->price !!}</ins>
 														</span>
-														<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-															<i class="fa fa-shopping-basket"></i>
-															<em>Lease</em>
-														</a>
+
+														@if ($book->copies == 0)
+															<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
+																<i class="fa fa-shopping-basket"></i>
+																<em>Lease</em>
+															</button>
+														@else
+															<button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+																<i class="fa fa-shopping-basket"></i>
+																<em>Lease</em>
+															</button>
+														@endif
+
 													</div>
 												</div>
 											</div>
