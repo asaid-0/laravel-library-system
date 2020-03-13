@@ -23,13 +23,12 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
-
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+  <!---- bootstap and jquery---->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 
 <body>
@@ -47,7 +46,7 @@
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">Logout</a></li>
+          <li><a class="logout" href="/login">Logout</a></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -124,26 +123,34 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
+            <h1>All Users</h1>
+            <a href="/register"><button type="button" class="btn btn-primary" id="user">Add User</button></a>
             <table class="content-table">
                 <thead>
-                    <tr>
+                  <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>User name</th>
                     <th>Email</th>
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Activate</button>
-                        </td>
-                    </tr>
+                  @foreach ($users as $member)
+                  <tr>
+                    <td>{{$member->id}}</td>
+                    <td>{{$member->userName}}</td>
+                    <td>{{$member->email}}</td>
+                    <td> 
+                      <input type="checkbox" data-id="{{$member->id}}" class="toggle-class"  data-toggle="toggle" data-on="Activate" data-off="Deactivate" {{$member->isActive == true ? 'checked' : ''}}> 
+                    <a href="{{ route('users.edit',$member->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                    </td>
+                  </tr>
+                  @endforeach 
                 </tbody>
             </table>
+            {{-- <div class="col-12 d-fles justify-content-center pt-4">
+              {{ $user->links() }}
+            </div> --}}
           </div>
       </section>
     </section>
@@ -155,15 +162,9 @@
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
         </p>
         <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="index.html#" class="go-top">
+        <a href="/users" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -172,7 +173,6 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="Dashio/lib/jquery/jquery.min.js"></script>
-
   <script src="Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="Dashio/lib/jquery.scrollTo.min.js"></script>
@@ -183,4 +183,23 @@
   <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
 </body>
+  {{-- <script>
+    $(function() {
+      $('.toggle-class').change(function() {
+        let isActive = $(this).prop('checked') == true ? 1 : 0 ;
+        let id = $(this).data('id') ;
+
+        $.ajax({
+          type:'GET',
+          datatype:'json' , 
+          url:'/changeStatus',
+          data:{'isActive':isActive , 'id':id},
+          success:function(data){
+            console.log(data.success)
+          }
+        });
+      })
+    })
+  </script> --}}
 </html>
+
