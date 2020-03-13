@@ -24,7 +24,7 @@ Route::get('/test', function () {
     return view('welcome');
 });
 
-Route::resource('userbooks', 'BookController');
+Route::resource('userbooks', 'User\BookController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admins', 'AdminController@admin')->name('admins');
