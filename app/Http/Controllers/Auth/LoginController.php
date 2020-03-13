@@ -18,7 +18,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -40,24 +40,22 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-
-    {   
+    {
         $input = $request->all();
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
         ]);
-        if(auth()->attempt(array('username' => $input['username'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('username' => $input['username'], 'password' => $input['password']))) {
             if (auth()->user()->isAdmin == 1) {
                 return redirect()->route('admins');
-            }else{
+            } else {
                 return redirect()->route('home');
             }
 
-        }else{
-            return redirect()->route('login')->with('error','Email-Address And Password Are Wrong.');
+        } else {
+            return redirect()->route('login')->with('message', 'These credentials do not match our records.');
         }
-    
+
     }
 }
