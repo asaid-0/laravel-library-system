@@ -29,8 +29,8 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $users = Users::get();
-        return view('users',compact('users'));
+        // $users = Users::get();
+        return view('users',['users'=>Users::all()]);
     }
      // public function changeUserStatus(Request $request)
     // {
@@ -103,7 +103,7 @@ class AdminController extends Controller
         $user->email=$request->email ;
         $user->save();
         $request->session()->flash('success','your data updated successfully');
-        return redirect()->action('UsersController@index');
+        return redirect()->action('AdminController@index');
     }
     /**
      * Remove the specified resource from storage.
