@@ -29,10 +29,13 @@ Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admins', 'AdminController@admin')->name('admins');
+// Route::get('changeStatus', 'AdminController@ChangeUserStatus');
 Route::get('/users', 'AdminController@user')->name('users');
 Route::get('/books', 'AdminController@book')->name('books');
 Route::get('/categories', 'AdminController@category')->name('categories');
 Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
+Route::resource('users','AdminController') ;
+Route::get('users', 'AdminController@index');
 
 
 
