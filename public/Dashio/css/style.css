@@ -3357,7 +3357,7 @@ ul.chat-available-user li a:hover {
 .site-footer p {
   margin-bottom: 5px;
 }
-.sit-footer {
+/* .sit-footer {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
@@ -3366,7 +3366,7 @@ ul.chat-available-user li a:hover {
 
 .sit-footer p {
   margin-bottom: 5px;
-}
+} */
 
 
 .credits, .credits a {
@@ -3391,11 +3391,6 @@ ul.chat-available-user li a:hover {
 .site-min-height {
     min-height: 900px;
 }
-
-
-
-
-
 /* Contact Form */
 
 #contact {
@@ -3572,8 +3567,8 @@ ul.chat-available-user li a:hover {
 }
 .content-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
+    margin: 2.2em 15em ;
+    font-size:1em ;
     /* width:110em ; */
     border-radius: 5px 5px 0 0;
     overflow: hidden;
@@ -3586,7 +3581,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .content-table th, .content-table td {
-    padding: 1em 11em;
+    padding: 1em 10em;
 }
 .content-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3598,7 +3593,7 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 30.7em;
+    margin-top: 33em;
     width: 192rem;
 }
 
@@ -3607,9 +3602,9 @@ ul.chat-available-user li a:hover {
 }
 .books-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
-    /* width:110em ; */
+    margin: 2em 10em ;
+    font-size:1em ;
+    font-weight: bold;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3621,7 +3616,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .books-table th, .books-table td {
-    padding: 1em 5em;
+    padding: 1em 4em;
 }
 .books-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3633,7 +3628,7 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top:30.3em;
+    margin-top:30.8em;
 }
 
 .book-footer p {
@@ -3641,9 +3636,8 @@ ul.chat-available-user li a:hover {
 }
 .category-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
-    /* width:110em ; */
+    margin: 2em 15em ;
+    font-size:1em ;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3655,7 +3649,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .category-table th, .category-table td {
-    padding: 1em 10em;
+    padding: 1em 6em;
 }
 .category-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3668,9 +3662,14 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 30.7em;
-    width: 100%;
+    margin-top: 31.2em;
 }
 .category-footer p {
     margin-bottom: 5px;
+  }
+  #book {
+      margin-left: 98em;
+  }
+  #category {
+    margin-left: 90em;
   }

@@ -24,19 +24,12 @@
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
 
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
 </head>
 
 <body>
   <section id="container">
-    <!-- **********************************************************************************************************************************************************
-        TOP BAR CONTENT & NOTIFICATIONS
-        *********************************************************************************************************************************************************** -->
+    <!--  TOP BAR CONTENT & NOTIFICATIONS
+     *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
@@ -124,25 +117,28 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
+           <a href=""><button type="button" class="btn btn-primary" id="book">Add Book</button></a>
             <table class="books-table">
                 <thead>
                     <tr>
                     <th>Book ID</th>
                     <th>Title</th>
-                    <th>Category</th>
+                    <th>Category name</th>
                     <th>Author</th>
                     <th>No. copies</th>
                     <th>current No.</th>
+                    <th>Picture</th>
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>1</td>
+                        <td>aa</td>
+                        <td>rr</td>
+                        <td>pp</td>
+                        <td>20</td>
+                        <td>10</td>
                         <td></td>
                         <td>
                             <button type="button" class="btn btn-primary">Edit</button>
@@ -162,12 +158,6 @@
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
         </p>
         <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
         <a href="index.html#" class="go-top">
