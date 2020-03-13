@@ -25,6 +25,7 @@ Route::get('/test', function () {
 });
 
 Route::resource('userbooks', 'User\BookController');
+Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admins', 'AdminController@admin')->name('admins');

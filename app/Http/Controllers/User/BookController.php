@@ -85,4 +85,11 @@ class BookController extends Controller
     {
         //
     }
+    
+    public function list(Category $cat)
+    {
+        $categories = Category::paginate(10);
+        $books = $cat->books()->paginate(12);
+        return view('user.index', ['books' => $books, 'categories' => $categories]);
+    }
 }
