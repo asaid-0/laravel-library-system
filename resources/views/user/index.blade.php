@@ -20,6 +20,9 @@
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/color.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
@@ -90,6 +93,11 @@
 					News Grid Start
 			*************************************-->
 			<div class="tg-sectionspace tg-haslayout">
+				@if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
 				<div class="container">
 					<div class="row">
 						<div id="tg-twocolumns" class="tg-twocolumns">
@@ -173,10 +181,39 @@
 																<em>Lease</em>
 															</button>
 														@else
-															<button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+															<button class="tg-btn tg-btnstyletwo"  data-toggle="modal" data-target={{ '#book'.$book->id }}>
 																<i class="fa fa-shopping-basket"></i>
 																<em>Lease</em>
 															</button>
+															<!-- Modal -->
+															<div class="modal fade" id={{ 'book'.$book->id }} role="dialog">
+																<div class="modal-dialog modal-sm">
+																<div class="modal-content">
+																	<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal">&times;</button>
+																	<h4 class="modal-title">Book lease</h4>
+																	</div>
+																	<div class="modal-body">
+																	<p>How many days you would lease the book?</p>
+																{{-- <form> --}}
+																{!! Form::open(['route' => ['UserLeasedBook.store','id'=>$book],'method' => 'post']) !!}
+																	<div class="form-group">
+																		{!! Form::number('NumofDays',null,$attributes = ['required','min'=>'0']) !!}
+																		{{-- <input type="number" class="form-control" id="numberOfDays" placeholder="specify number of days" required> --}}
+																	</div>
+																	<button type="submit" class="tg-btn tg-btnstyletwo">
+																		<i class="fa fa-shopping-basket"></i>
+																		<em>Lease</em>
+																		</button>
+																{!! Form::close() !!}		
+																{{-- </form> --}}
+																</div>
+																<div class="modal-footer">
+																<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+																</div>
+																</div>
+																</div>
+															</div>
 														@endif
 
 													</div>

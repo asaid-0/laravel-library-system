@@ -50,7 +50,7 @@ class LoginController extends Controller
             if (auth()->user()->isAdmin == 1) {
                 return redirect()->route('admins');
             } else {
-                return redirect()->route('home');
+                return redirect()->route('userbooks.index');
             }
 
         } else {
