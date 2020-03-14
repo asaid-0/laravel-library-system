@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
+use App\UserLeasedBook;
 class BookController extends Controller
 {
     /**
@@ -15,9 +16,10 @@ class BookController extends Controller
      */
     public function index()
     {
+        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
         $categories = Category::paginate(10);
         $books = Book::paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories]);
+        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
     }
 
     /**
@@ -88,8 +90,9 @@ class BookController extends Controller
     
     public function list(Category $cat)
     {
+        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
         $categories = Category::paginate(10);
         $books = $cat->books()->paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories]);
+        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
     }
 }

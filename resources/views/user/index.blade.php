@@ -161,7 +161,7 @@
 														<li><a href="javascript:void(0);">{!! $book->getCategory() !!}</a></li>
 														</ul>
 														<div class="tg-themetagbox">
-															<span class="tg-themetag">{!! $book->copies !!} copies</span>
+															<span class="tg-themetag">{!! $book->copies - $bookLeased->where('book_id',$book->id)->count() !!} copies</span>
 														</div>
 														
 
@@ -175,11 +175,15 @@
 															<ins>${!! $book->price !!}</ins>
 														</span>
 
-														@if ($book->copies == 0)
+														@if ($book->copies - $bookLeased->where('book_id',$book->id)->count() == 0)
 															<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 																<i class="fa fa-shopping-basket"></i>
-																<em>Lease</em>
+																<em>Unaviable</em>
 															</button>
+														@elseif (App\Book::find($book->id)->leasedBy()->where('user_id',Auth::id())->get()->count()>0)
+														<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
+															<em>leased</em>
+														</button>
 														@else
 															<button class="tg-btn tg-btnstyletwo"  data-toggle="modal" data-target={{ '#book'.$book->id }}>
 																<i class="fa fa-shopping-basket"></i>
