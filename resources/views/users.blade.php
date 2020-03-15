@@ -42,7 +42,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="" class="logo"><b>ADM<span>IN</span></b></a>
+      <a href="/admins" class="logo"><b>ADM<span>IN</span></b></a>
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
@@ -74,7 +74,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+        <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="/admins">
               <i class="fa fa-dashboard"></i>
@@ -122,14 +122,14 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
+        <div class ="userAlert" style="z-inbox:10000; display:none; background:green; font-weight:450;width:35px ; position:fixed; top:10%; left:5%; color:white; padding:5px 20px"></div>
           <div class="create-table">
             <h1>All Users</h1>
-            <a href="/register"><button type="button" class="btn btn-primary" id="user">Add User</button></a>
             <table class="content-table">
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>User name</th>
+                    <th>user name</th>
                     <th>Email</th>
                     <th>Action</th>
                     </tr>
@@ -141,19 +141,20 @@
                     <td>{{$member->userName}}</td>
                     <td>{{$member->email}}</td>
                     <td> 
-                      <input type="checkbox" data-id="{{$member->id}}" class="toggle-class"  data-toggle="toggle" data-on="Activate" data-off="Deactivate" {{$member->isActive == true ? 'checked' : ''}}> 
-                    <a href="{{ route('users.edit',$member->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                      <a href=""><button type="button" class="btn btn-primary btn-sm active_deactive_users" id="{{$member->id }}"> {{ $member->isActive == 1 ? 'Active': 'Deactive' }}</button></a>
+                      <a href="{{ route('users.edit',$member->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
                     </td>
                   </tr>
                   @endforeach 
                 </tbody>
             </table>
-            {{-- <div class="col-12 d-fles justify-content-center pt-4">
-              {{ $user->links() }}
-            </div> --}}
           </div>
+          
       </section>
     </section>
+    {{-- <div class="col-12 d-fles justify-content-center pt-4">
+            {{$users->links()}}
+    </div> --}}
     <!--main content end-->
     <!--footer start-->
     <footer class="users-footer">
@@ -182,24 +183,8 @@
   <script src="Dashio/lib/common-scripts.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
+  <!-- javascript to active and deactive user-->
+  <script src="/js/changeStatus.js"></script>
 </body>
-  {{-- <script>
-    $(function() {
-      $('.toggle-class').change(function() {
-        let isActive = $(this).prop('checked') == true ? 1 : 0 ;
-        let id = $(this).data('id') ;
-
-        $.ajax({
-          type:'GET',
-          datatype:'json' , 
-          url:'/changeStatus',
-          data:{'isActive':isActive , 'id':id},
-          success:function(data){
-            console.log(data.success)
-          }
-        });
-      })
-    })
-  </script> --}}
 </html>
 

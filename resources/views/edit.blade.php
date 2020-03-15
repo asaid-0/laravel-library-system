@@ -36,11 +36,11 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="" class="logo"><b>ADM<span>IN</span></b></a>
+      <a href="/admins" class="logo"><b>ADM<span>IN</span></b></a>
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">Logout</a></li>
+          <li><a class="logout" href="/login">Logout</a></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -53,7 +53,7 @@
                             <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
                         </ul>
                     </div>
-                </form>
+                  </form>
             </div>
         </div>
     </div>
@@ -129,12 +129,20 @@
             </div>
             @endif
             <div class="form-group">  
-            {{ Form::label('name')}}
-            {{ Form::text('name' , $users->userName) }}
+              {{ Form::label('name')}}
+              {{ Form::text('name' , $users->name) }}
+              </div>
+            <div class="form-group">  
+            {{ Form::label('user name')}}
+            {{ Form::text('user' , $users->userName) }}
             </div>
             <div class="form-group">
               {{ Form::label('email') }}
               {{ Form::text('email' , $users->email) }}
+            </div>
+            <div class="form-group">
+              {{ Form::label('Password') }}
+              {{ Form::text('password' , $users->password) }}
             </div>
             <div class="form-group">
               {{ Form::submit('update' ,["class"=>"btn btn-primary"])}}
