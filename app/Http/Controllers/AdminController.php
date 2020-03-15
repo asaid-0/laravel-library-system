@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth ;
-use App\Users ;
+use App\User ;
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function adminHome()
     {
         return view('admins');
@@ -29,22 +23,33 @@ class AdminController extends Controller
     }
     public function index()
     {
-        // $users = Users::get();
-        return view('users',['users'=>Users::all()]);
+        $users = User::get();
+        return view('users',compact('users') );
     }
-     // public function changeUserStatus(Request $request)
-    // {
-    //     $user=Users::find($request->id);
-    //     $user->isActive= $request->isActive ;
-    //     $user->save() ;
-    //     return response()->json(['success'=>'Status change successfully']) ;
-    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function active_deactive_users ($id)
+    {
+        $users =User::find($id);
+        if($users->isActive == 1)
+        {
+            $users->isActive = 0 ;
+        }
+        else{
+            $users->isActive = 1 ;
+        }
+        if($users->save()){
+            echo json_encode("success") ;
+        }
+        else{
+            echo json_encode("failed");
+        }
+    }
+ 
     public function create()
     {
         //
@@ -58,7 +63,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          //
     }
 
     /**
@@ -80,7 +85,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        return view('edit', ['users'=> \App\Users::find($id)]);
+        return view('edit', ['users'=> \App\User::find($id)]);
     }
 
     /**
@@ -90,21 +95,24 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $user)
+    public function update(Request $request, User $users)
     {
         
         $validateData = $request->validate([
-            'name'=>'required|min:2', 
-            'userName'=> 'required|unique:users|min:2',
+            'name'=>'required|min:3', 
+            'userName'=> 'required|unique:users|min:3',
             'email'=>'required|email',
+            'password'=>'required'
         ]);
-        $user->name = $request->name ;
-        $user->userName=$request->userName ;
-        $user->email=$request->email ;
-        $user->save();
+        $users->name = $request->name ;
+        $users->userName=$request->userName ;
+        $users->email=$request->email ;
+        $users->password=$request->password ;
+        $users->save();
         $request->session()->flash('success','your data updated successfully');
         return redirect()->action('AdminController@index');
     }
+
     /**
      * Remove the specified resource from storage.
      *
