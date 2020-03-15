@@ -169,7 +169,7 @@
 														<div class="tg-booktitle">
 															<h3><a href="/book" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
 														</div>
-														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->auther !!}</a></span>
+														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->author !!}</a></span>
 														<span class="tg-stars"><span></span></span>
 														<span class="tg-bookprice">
 															<ins>${!! $book->price !!}</ins>
