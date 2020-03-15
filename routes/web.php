@@ -37,6 +37,7 @@ Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('
 Route::resource('users','AdminController') ;
 Route::resource('UserLeasedBook','UserLeasedBookController') ;
 Route::get('users', 'AdminController@index');
+Route::get('/active_deactive_users/{id}', 'AdminController@active_deactive_users');
 
 
 
