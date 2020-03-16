@@ -113,9 +113,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $users)
+    public function update(Request $request,$user)
     {
-
+        $input=$request->except('_method','_token');
         $validateData = $request->validate([
             'name'=>'required|min:3', 
             'userName'=> 'required|min:3|unique:users,id',
@@ -123,7 +123,7 @@ class AdminController extends Controller
             'password'=>'required|min:8'
         ]);
         User::where('id',$user)->update($input);
-        return redirect()->route('AdminController@index')->with('message', "Phone has been updated successfully");;
+        return redirect()->action('AdminController@index')->with('message', "Phone has been updated successfully");;
     }
 
     /**
