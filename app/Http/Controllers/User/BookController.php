@@ -16,10 +16,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
-        $categories = Category::paginate(10);
+        // $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
         $books = Book::paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
+        return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
     /**
@@ -51,7 +51,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        echo $id;
+        return view('user.book', ['book' => Book::find($id)]);
     }
 
     /**
@@ -90,9 +90,8 @@ class BookController extends Controller
     
     public function list(Category $cat)
     {
-        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
-        $categories = Category::paginate(10);
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
         $books = $cat->books()->paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
+        return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 }

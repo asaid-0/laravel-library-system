@@ -37,4 +37,10 @@ class Book extends Model
             return $this->favoriteFor()->where('users.id', $user->id)->exists();
         return false;
     }
+    public function getCopies(){
+        return max($this->copies - $this->leasedBy()->where('leased_until','>',now())->count(), 0);
+    }
+    public function getRelatedBooks(){
+        return self::WHERE('title', 'REGEXP', str_replace(' ', '|', $this->title))->UNION(self::WHERE('category_id', $this->category_id))->limit(10)->get();
+    }
 }

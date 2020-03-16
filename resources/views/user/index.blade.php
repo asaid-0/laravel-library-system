@@ -84,7 +84,9 @@
 		<!--************************************
 				Header End
 		*************************************-->
-		
+		<div style="width: 100%; display: block; float: left; text-align: center; margin: 0; padding: 0">
+			{{$books->links()}}
+		</div>
 		<!--************************************
 				Main Start
 		*************************************-->
@@ -158,16 +160,18 @@
 													</figure>
 													<div class="tg-postbookcontent">
 														<ul class="tg-bookscategories">
-														<li><a href="javascript:void(0);">{!! $book->getCategory() !!}</a></li>
+														<li><a href="javascript:void(0);"> <i class="fa fa-folder"></i> {!! $book->getCategory() !!}</a></li>
 														</ul>
 														<div class="tg-themetagbox">
-															<span class="tg-themetag">{!! $book->copies - $bookLeased->where('book_id',$book->id)->count() !!} copies</span>
+															{{-- <span class="tg-themetag">{!! max($book->copies - $bookLeased->where('book_id',$book->id)->count(), 0) !!} copies</span> --}}
+															<span class="tg-themetag">{!! $book->getCopies() !!} copies</span>
+															
 														</div>
 														
 
 														
 														<div class="tg-booktitle">
-															<h3><a href="/book" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
+															<h3><a href="/userbooks/{{$book->id}}" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
 														</div>
 														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->author !!}</a></span>
 														<span class="tg-stars"><span></span></span>
@@ -175,11 +179,12 @@
 															<ins>${!! $book->price !!}</ins>
 														</span>
 
-														@if ($book->copies - $bookLeased->where('book_id',$book->id)->count() == 0)
+														@if ($book->getCopies() == 0)
 															<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 																<i class="fa fa-shopping-basket"></i>
 																<em>Unaviable</em>
 															</button>
+															{{-- what if need to re-lease ? --}}
 														@elseif (App\Book::find($book->id)->leasedBy()->where('user_id',Auth::id())->get()->count()>0)
 														<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 															<em>leased</em>
@@ -226,9 +231,6 @@
 											@empty
 												<p>No Books</p>
 											@endforelse
-											<div>
-												{{$books->links()}}
-											</div>
 
 
 										</div>
@@ -247,12 +249,12 @@
 									</div>
 									<div class="tg-widget tg-catagories">
 										<div class="tg-widgettitle">
-											<h3>Categories</h3>
+											<h3><i class="fa fa-folder-open"></i> Categories</h3>
 										</div>
 										<div class="tg-widgetcontent">
 											<ul>
 												@forelse ($categories as $cat)
-													<li><a href="{{ action('User\BookController@list', $cat) }}"><span>{{$cat->category_name}}</span><em>{{$cat->books()->count()}}</em></a></li>
+													<li><a href="{{ action('User\BookController@list', $cat) }}"><span>{{$cat->category_name}}</span><em class="book-count">{{$cat->books_count}}</em></a></li>
 												@empty
 													<p>No categories</p>
 												@endforelse

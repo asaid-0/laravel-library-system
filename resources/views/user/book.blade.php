@@ -10,19 +10,19 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/transitions.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/color.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/slider.css">
-    <link rel="stylesheet" href="css/comments.css">
-	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<link rel="stylesheet" href="/css/jquery-ui.css">
+	<link rel="stylesheet" href="/css/owl.carousel.css">
+	<link rel="stylesheet" href="/css/transitions.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/slider.css">
+    <link rel="stylesheet" href="/css/comments.css">
+	<script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
 	<!--[if lt IE 8]>
@@ -69,7 +69,7 @@
                                 </li>
 							</ul>
 							<div class="tg-userlogin">
-								<figure><a href="javascript:void(0);"><img style="height: 30px" src="images/users/img-01.jpg" alt="user"></a></figure>
+								<figure><a href="javascript:void(0);"><img style="height: 30px" src="/images/users/img-01.jpg" alt="user"></a></figure>
 								<span>Hi, User</span>
 							</div>
 						</div>
@@ -87,21 +87,21 @@
             <div class="container">
                 <div class="row book-details">
                     <div style="display: inline-block; float: left">
-                        <img src="images/books/img-04.jpg" alt="title" />
+                        <img src="/images/books/img-04.jpg" alt="title" />
 
                     </div>
                     <div style="display: inline-block; width: 50%; padding: 0 2rem">
                             <div>
                                 <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa fa-folder"></i> {!! $book->getCategory() !!}</a></li>
                                     <i class="fa fa-heart love-btn"></i>
                                 </ul>
                             </div>
                             
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
+                            <div class="tg-themetagbox"><span class="tg-themetag">{{ $book->getCopies() }} copies</span></div>
                             
                             <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
+                                <h3><a href="javascript:void(0);">{!! $book->title !!}</a></h3>
                             </div>
                             
 
@@ -114,11 +114,11 @@
                                 <i style="color: #fcd01e" class="fa fa-star{{ 4<=$i?'-o':'' }}" aria-hidden="true"></i>
                             @endfor
                             <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->author !!}</a></span>
                             </div>
                             <span class="tg-bookprice">
-                                <ins>$25.18</ins>
-                                <del>$27.20</del>
+                            <ins>{{ $book->price }}</ins>
+                                {{-- <del>$27.20</del> --}}
                             </span>
                             
                             
@@ -297,27 +297,28 @@
 <footer>
         <div class="carousel-wrapper" id="products">
             <ul class="carousel-inner clearfix">
+                @forelse ($book->getRelatedBooks() as $related)
                 <li class="item">
                     <div class="col-md-12">
                         <div class="col-md-4 image-container">
-                            <img src="images/books/img-02.jpg" alt="title" />
+                            <img src="/images/books/img-02.jpg" alt="title" />
                         </div>
                         
                         <div class="col-md-8 book-info">
                             <div>
                                 <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
+                                    <li><a href="javascript:void(0);">{!! $related->getCategory() !!}</a></li>
                                 </ul>
                             </div>
                             
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
+                            <div class="tg-themetagbox"><span class="tg-themetag">{{ $related->getCopies() }} copies</span></div>
                             
                             <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
+                                <h3><a href="javascript:void(0);">{!! $related->title !!}</a></h3>
                             </div>
                             
                             <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $related->author !!}</a></span>
                             </div>
                             
                             <div>
@@ -332,146 +333,11 @@
                         </div>
                     </div>
                 </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-03.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
+                @empty
 
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-04.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
+                @endforelse
 
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-01.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
-
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="col-md-12">
-                        <div class="col-md-4 image-container">
-                            <img src="images/books/img-05.jpg" alt="title" />
-                        </div>
-                        
-                        <div class="col-md-8 book-info">
-                            <div>
-                                <ul class="tg-bookscategories">
-                                    <li><a href="javascript:void(0);">Children’s Book</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="tg-themetagbox"><span class="tg-themetag">5 copies</span></div>
-                            
-                            <div class="tg-booktitle">
-                                <h3><a href="javascript:void(0);">Help Me Find My Stomach</a></h3>
-                            </div>
-                            
-                            <div>
-                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-                            </div>
-                            
-                            <div>
-                                <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    <em>Lease</em>
-                                </a>
-                            </div>
-                            
-
-                            
-                        </div>
-                    </div>
-                </li>
+                
             </ul>
             <a href="#" class="carousel-left">
                 <i class="fa fa-chevron-left slider-btn"></i>
@@ -480,11 +346,7 @@
                 <i class="fa fa-chevron-right slider-btn"></i>
             </a>
           </div>
-
-
-
-
-        </footer>
+</footer>
 
 
         
@@ -494,7 +356,7 @@
 	<!--************************************
 			Wrapper End
 	*************************************-->
-	<script src="js/vendor/jquery-library.js"></script>
+	<script src="/js/vendor/jquery-library.js"></script>
 	<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&language=en"></script>
 	{{-- <script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.vide.min.js"></script>
@@ -505,10 +367,10 @@
 	<script src="js/appear.js"></script>
 	<script src="js/gmap3.js"></script>
     <script src="js/main.js"></script> --}}
-    <script src="js/slider.js"></script>
+    <script src="/js/slider.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="js/comment.js"></script>
+    <script src="/js/comment.js"></script>
 </body>
 </html>
