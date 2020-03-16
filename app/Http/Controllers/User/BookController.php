@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
@@ -87,7 +87,12 @@ class BookController extends Controller
     {
         //
     }
-    
+    public function comment(Request $request, Book $book){
+        if($book->canComment()){
+            $book->BookComments()->attach(Auth::id(), ['comment' => $request->comment, 'rank' => $request->rating]);
+        }
+        return back();
+    }
     public function list(Category $cat)
     {
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();

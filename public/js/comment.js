@@ -34,6 +34,13 @@ $(function(){
     closeReviewBtn.hide();
     
   });
+  $('.stars').on('click', () => {
+    $('#difficulty-5')[0].checked ? ratingsField.val(5) : 
+    $('#difficulty-4')[0].checked ? ratingsField.val(4) : 
+    $('#difficulty-3')[0].checked ? ratingsField.val(3) : 
+    $('#difficulty-2')[0].checked ? ratingsField.val(2) : 
+    ratingsField.val(1);
+  });
 
   $('.starrr').on('starrr:change', function(e, value){
     ratingsField.val(value);

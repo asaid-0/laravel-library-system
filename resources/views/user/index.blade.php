@@ -90,7 +90,7 @@
 		<!--************************************
 				Main Start
 		*************************************-->
-		<main id="tg-main" class="tg-main tg-haslayout">
+		<main style="margin-top: 2rem" id="tg-main" class="tg-main tg-haslayout">
 			<!--************************************
 					News Grid Start
 			*************************************-->
@@ -185,7 +185,7 @@
 																<em>Unaviable</em>
 															</button>
 															{{-- what if need to re-lease ? --}}
-														@elseif (App\Book::find($book->id)->leasedBy()->where('user_id',Auth::id())->get()->count()>0)
+														@elseif (!$book->isLeaseable())
 														<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 															<em>leased</em>
 														</button>

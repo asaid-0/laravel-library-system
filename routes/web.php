@@ -17,22 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/test', function () {
     return view('welcome');
 });
 
 Route::resource('userbooks', 'User\BookController');
+Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
 Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
 
 Route::get('/home', 'HomeController@index')->name('home');

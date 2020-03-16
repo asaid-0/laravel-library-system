@@ -859,7 +859,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	font-family: 'FontAwesome';
 }
 .tg-middlecontainer {
-	z-index: 2;
+	/* z-index: 2; */
 	width: 100%;
 	float: left;
 	position: relative;
