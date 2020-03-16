@@ -23,6 +23,7 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
   <!-- =======================================================
     Template Name: Dashio
@@ -125,6 +126,9 @@
       <section class="wrapper">
           <div class="col-lg-9 main-chart">
             <!--CUSTOM CHART START -->
+            {!! $chart->container() !!}
+            {!! $chart->script() !!}
+          </div>
             <!--custom chart end-->
             <div class="row mt">
               <!-- SERVER STATUS PANELS -->
