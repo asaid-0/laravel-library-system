@@ -23,14 +23,6 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -84,6 +76,12 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a href="/showAdmins">
+              <i class="fas fa-users"></i>
+              <span>All admins</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a href="/users">
               <i class="fas fa-users"></i>
               <span>All Users</span>
@@ -126,9 +124,6 @@
       <section class="wrapper">
           <div class="col-lg-9 main-chart">
             <!--CUSTOM CHART START -->
-            {!! $chart->container() !!}
-            {!! $chart->script() !!}
-          </div>
             <!--custom chart end-->
             <div class="row mt">
               <!-- SERVER STATUS PANELS -->
@@ -185,12 +180,6 @@
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
         </p>
         <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
         <a href="index.html#" class="go-top">

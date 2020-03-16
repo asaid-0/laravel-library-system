@@ -76,6 +76,12 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a href="/showAdmins">
+              <i class="fas fa-users"></i>
+              <span>All admins</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a href="/users">
               <i class="fas fa-users"></i>
               <span>All Users</span>
@@ -115,9 +121,9 @@
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-      <section class="wrapper">
+      <section class="wrapper-update">
+        <h1>Update Profile</h1>
           <div class="col-lg-9 main-chart">
-            {!! Form::open(['route' => ['users.update',$users->id],'method'=>'put']) !!}
             <div>
               @foreach ($errors->all() as $error)
               <li class="alert alert-danger">{{$error}}</li>            
@@ -128,21 +134,22 @@
               {{ session()->get('message') }}
             </div>
             @endif
+            {!! Form::open(['route' => ['users.update',$users->id],'method'=>'put']) !!}
             <div class="form-group">  
               {{ Form::label('name')}}
-              {{ Form::text('name' , $users->name) }}
+              {{ Form::text('name' , $users->name,array('class' => 'awesome')) }}
               </div>
             <div class="form-group">  
-            {{ Form::label('user name')}}
-            {{ Form::text('user' , $users->userName) }}
+            {{ Form::label('username')}}
+            {{ Form::text('userName' , $users->userName ,array('class' => 'userAwesome')) }}
             </div>
             <div class="form-group">
               {{ Form::label('email') }}
-              {{ Form::text('email' , $users->email) }}
+              {{ Form::text('email' , $users->email,array('class' => 'emailAwesome')) }}
             </div>
             <div class="form-group">
               {{ Form::label('Password') }}
-              {{ Form::text('password' , $users->password) }}
+              {{ Form::input('password', 'password', $users->password,array('class' => 'passwordAwesome')) }}
             </div>
             <div class="form-group">
               {{ Form::submit('update' ,["class"=>"btn btn-primary"])}}
@@ -154,7 +161,7 @@
     </section>
     <!--main content end-->
     <!--footer start-->
-    <footer class="site-footer">
+    <footer class="update-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved

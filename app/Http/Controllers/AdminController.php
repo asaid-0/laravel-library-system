@@ -26,7 +26,10 @@ class AdminController extends Controller
 
         return view('admins', compact('chart'));
     }
-
+    public function adminsPage()
+    {
+        return view('showAdmins') ;
+    }
     public function user()
     {
         return view('users');
@@ -41,8 +44,8 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $users = User::get();
-        return view('users', compact('users'));
+        $users = User::paginate(3);
+        return view('users',compact('users') );
     }
 
     /**
@@ -114,18 +117,13 @@ class AdminController extends Controller
     {
 
         $validateData = $request->validate([
-            'name' => 'required|min:3',
-            'userName' => 'required|unique:users|min:3',
-            'email' => 'required|email',
-            'password' => 'required',
+            'name'=>'required|min:3', 
+            'userName'=> 'required|min:3|unique:users,id',
+            'email'=>'required|email|unique:users,id',
+            'password'=>'required|min:8'
         ]);
-        $users->name = $request->name;
-        $users->userName = $request->userName;
-        $users->email = $request->email;
-        $users->password = $request->password;
-        $users->save();
-        $request->session()->flash('success', 'your data updated successfully');
-        return redirect()->action('AdminController@index');
+        User::where('id',$user)->update($input);
+        return redirect()->route('AdminController@index')->with('message', "Phone has been updated successfully");;
     }
 
     /**

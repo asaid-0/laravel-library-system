@@ -10,19 +10,19 @@
   <title>User page</title>
 
   <!-- Favicons -->
-  <link href="/Dashio/img/favicon.png" rel="icon">
-  <link href="/Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="Dashio/img/favicon.png" rel="icon">
+  <link href="Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="/Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="/Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="Dashio/css/zabuto_calendar.css">
   <link rel="stylesheet" type="text/css" href="Dashio/lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
-  <link href="/Dashio/css/style.css" rel="stylesheet">
-  <link href="/Dashio/css/style-responsive.css" rel="stylesheet">
-  <script src="/Dashio/lib/chart-master/Chart.js"></script>
+  <link href="Dashio/css/style.css" rel="stylesheet">
+  <link href="Dashio/css/style-responsive.css" rel="stylesheet">
+  <script src="Dashio/lib/chart-master/Chart.js"></script>
   <!---- bootstap and jquery---->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -82,6 +82,12 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a href="/showAdmins">
+              <i class="fas fa-users"></i>
+              <span>All admins</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a class="active" href="/users">
               <i class="fas fa-users"></i>
               <span>All Users</span>
@@ -104,12 +110,6 @@
               <i class=" fa fa-bar-chart-o"></i>
               <span>Charts</span>
               </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -125,6 +125,7 @@
         <div class ="userAlert" style="z-inbox:10000; display:none; background:green; font-weight:450;width:35px ; position:fixed; top:10%; left:5%; color:white; padding:5px 20px"></div>
           <div class="create-table">
             <h1>All Users</h1>
+            <a href="/register" ><button class="btn btn-primary" id="user">Add user</button></a>
             <table class="content-table">
                 <thead>
                   <tr>
@@ -148,13 +149,12 @@
                   @endforeach 
                 </tbody>
             </table>
+            <div class="col-12 d-fles justify-content-center pt-4" style="margin-left:50% ;">
+              {{$users->links()}}
+            </div>
           </div>
-          
       </section>
     </section>
-    {{-- <div class="col-12 d-fles justify-content-center pt-4">
-            {{$users->links()}}
-    </div> --}}
     <!--main content end-->
     <!--footer start-->
     <footer class="users-footer">
@@ -173,16 +173,16 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="/Dashio/lib/jquery/jquery.min.js"></script>
-  <script src="/Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="/Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="/Dashio/lib/jquery.scrollTo.min.js"></script>
-  <script src="/Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="/Dashio/lib/jquery.sparkline.js"></script>
+  <script src="Dashio/lib/jquery/jquery.min.js"></script>
+  <script src="Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="Dashio/lib/jquery.scrollTo.min.js"></script>
+  <script src="Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="Dashio/lib/jquery.sparkline.js"></script>
   <!--common script for all pages-->
-  <script src="/Dashio/lib/common-scripts.js"></script>
-  <script type="text/javascript" src="/Dashio/lib/gritter/js/jquery.gritter.js"></script>
-  <script type="text/javascript" src="/Dashio/lib/gritter-conf.js"></script>
+  <script src="Dashio/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
   <!-- javascript to active and deactive user-->
   <script src="/js/changeStatus.js"></script>
 </body>
