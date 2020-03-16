@@ -36,7 +36,7 @@ Route::resource('users','AdminController') ;
 Route::resource('UserLeasedBook','UserLeasedBookController') ;
 Route::get('users', 'AdminController@index');
 Route::get('/active_deactive_users/{id}', 'AdminController@active_deactive_users');
-
+Route::get('/search','User\BookController@search');
 
 
 

@@ -114,10 +114,11 @@
 														<div class="form-group">
 															<label>sort by:</label>
 															<span class="tg-select">
-																<select>
-																	<option>name</option>
-																	<option>name</option>
-																	<option>name</option>
+																<select onchange="window.location.replace(this.value);">
+																<option hidden disabled selected value>Sort</option>
+																<option value={{ route('userbooks.index', ['sort'=>"title"]) }}>Title</option>
+																<option value={{ route('userbooks.index', ['sort'=>"author"]) }}>Author</option>
+																<option value={{ URL::to('/userbooks')  }}>None</option>
 																</select>
 															</span>
 														</div>
@@ -240,12 +241,14 @@
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 								<aside id="tg-sidebar" class="tg-sidebar">
 									<div class="tg-widget tg-widgetsearch">
-										<form class="tg-formtheme tg-formsearch">
+
+										<form action={{ URL::to('/search') }} method="get" class="tg-formtheme tg-formsearch">
 											<div class="form-group">
 												<button type="submit"><i class="icon-magnifier"></i></button>
 												<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
 											</div>
 										</form>
+
 									</div>
 									<div class="tg-widget tg-catagories">
 										<div class="tg-widgettitle">

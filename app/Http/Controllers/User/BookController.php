@@ -16,9 +16,17 @@ class BookController extends Controller
      */
     public function index()
     {
+        // $books = Book::paginate(12);
+        $books = new Book;
+        if (request()->has('sort')){
+            $books = $books->orderBy(request('sort'));
+        }
+
+        $books= $books->paginate(12)->appends([
+             'sort'=>request('sort'),
+         ]); 
         // $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
-        $books = Book::paginate(12);
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
@@ -75,6 +83,17 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $validateData = $request->validate([
+            'search' => 'required',
+        ]);
+        $search= $request->search;
+        $books= Book::where('title','like','%'.$search.'%')->orWhere('author','like','%'.$search.'%')->paginate(12)->appends(request()->except('page'));;
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
+        return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
     /**
