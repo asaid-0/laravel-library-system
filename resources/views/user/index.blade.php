@@ -81,6 +81,11 @@
 			
 			
 		</header>
+		@if (session('status'))
+            <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 		<!--************************************
 				Header End
 		*************************************-->
@@ -95,11 +100,6 @@
 					News Grid Start
 			*************************************-->
 			<div class="tg-sectionspace tg-haslayout">
-				@if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
 				<div class="container">
 					<div class="row">
 						<div id="tg-twocolumns" class="tg-twocolumns">

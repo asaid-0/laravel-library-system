@@ -82,8 +82,11 @@
 			
 		</header>
         
-
-
+        @if (session('status'))
+            <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
         
         <div style="padding: 2rem" class="tg-middlecontainer">
             <div class="container">
