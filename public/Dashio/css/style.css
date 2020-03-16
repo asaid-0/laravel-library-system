@@ -422,7 +422,7 @@ ul.sidebar-menu li a.active i {
 
 .wrapper {
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 9.5em;
     padding-left: 25px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -3351,24 +3351,12 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 21em;
+    margin-top: 32.8em;
 }
 
 .site-footer p {
   margin-bottom: 5px;
 }
-/* .sit-footer {
-    background: #4ECDC4;
-    color: #fff;
-    padding: 15px 0;
-    margin-top: 27.4em;
-}
-
-.sit-footer p {
-  margin-bottom: 5px;
-} */
-
-
 .credits, .credits a {
   color: #fff;
 }
@@ -3549,9 +3537,6 @@ ul.chat-available-user li a:hover {
     margin-top:10px;
     margin-left: 70px;
 }
-.wrapper{
-    margin-top: 17em;
-}
 .list{
     text-decoration: none;
     display: flex;
@@ -3567,9 +3552,9 @@ ul.chat-available-user li a:hover {
 }
 .content-table{
     border-collapse: collapse;
-    margin: 2.2em 15em ;
+    margin: .025em 7em ;
     font-size:1em ;
-    /* width:110em ; */
+    width:90% ;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3581,7 +3566,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .content-table th, .content-table td {
-    padding: 1em 10em;
+    padding: 1em 7em;
 }
 .content-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3589,12 +3574,17 @@ ul.chat-available-user li a:hover {
 .content-table tbody tr:last-of-type{
     border-bottom: 2px solid #009879; 
 }
+.create-table h1{
+    color: #009879;
+    margin-top: .1px;
+    text-align: center;
+}
 .users-footer{
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 33em;
-    width: 192rem;
+    margin-top:38.3em;
+    width: 191.9rem;
 }
 
 .users-footer p {
@@ -3628,7 +3618,8 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top:30.8em;
+    margin-top:38.3em;
+    width: 191.8rem;
 }
 
 .book-footer p {
@@ -3662,14 +3653,69 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 31.2em;
+    margin-top: 38.7em;
+    width: 191.8rem;
 }
 .category-footer p {
     margin-bottom: 5px;
   }
-  #book {
-      margin-left: 98em;
+.admin-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 37.7em;
+    width: 191.9rem;
+}
+.admin-footer p {
+    margin-bottom: 5px;
   }
-  #category {
+#user {
+    margin-left: 105em;
+    margin-bottom: 1em;
+}
+#book {
+      margin-left: 98em;
+}
+#category {
     margin-left: 90em;
   }
+#edit{
+      margin-left:2em ;
+  }
+.wrapper-update {
+    display: inline-block;
+    margin-top: 9.5em;
+    margin-left: 1%;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+    width: 100%;
+}
+.wrapper-update h1 {
+    color:#009879;
+}
+.update-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 26.8em;
+    width: 147.5em;
+}
+.update-footer p {
+    margin-bottom: 5px;
+  }
+
+.awesome{
+    margin-left: 5%;
+}
+.userAwesome{
+    margin-left:3% ;
+}
+.emailAwesome{
+    margin-left:5.5% ;
+}
+.passwordAwesome{
+    margin-left:3.5% ;
+}
+  
