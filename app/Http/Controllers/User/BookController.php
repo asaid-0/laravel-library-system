@@ -77,6 +77,17 @@ class BookController extends Controller
         //
     }
 
+    public function search(Request $request)
+    {
+        $validateData = $request->validate([
+            'search' => 'required',
+        ]);
+        $search= $request->search;
+        $books= Book::where('title','like','%'.$search.'%')->orWhere('author','like','%'.$search.'%')->paginate(12)->appends(request()->except('page'));;
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
+        return view('user.index', ['books' => $books, 'categories' => $categories]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

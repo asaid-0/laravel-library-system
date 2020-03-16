@@ -21,6 +21,8 @@ class AdminController extends Controller
         $chart = new ProfitPerWeek;
         $chart->labels($profitPerWeekData->keys());
         $chart->dataset('Profit', 'line', $profitPerWeekData->values());
+        $chart->title("Profit Per Week" , 18, '#666',  true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+        $chart->displayLegend(false);
 
         return view('admins', compact('chart'));
     }
