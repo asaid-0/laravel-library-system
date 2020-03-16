@@ -114,10 +114,11 @@
 														<div class="form-group">
 															<label>sort by:</label>
 															<span class="tg-select">
-																<select>
-																	<option>name</option>
-																	<option>name</option>
-																	<option>name</option>
+																<select onchange="window.location.replace(this.value);">
+																<option hidden disabled selected value>Sort</option>
+																<option value={{ route('userbooks.index', ['sort'=>"title"]) }}>Title</option>
+																<option value={{ route('userbooks.index', ['sort'=>"author"]) }}>Author</option>
+																<option value={{ URL::to('/userbooks')  }}>None</option>
 																</select>
 															</span>
 														</div>
