@@ -30,7 +30,6 @@ class AdminController extends Controller
     {
         return view('showAdmins') ;
     }
-<<<<<<< HEAD
     public function user()
     {
         return view('users');
@@ -43,7 +42,6 @@ class AdminController extends Controller
     {
         return view('categories');
     }
-=======
     
     // public function user(){
     //     return view('users');
@@ -54,7 +52,6 @@ class AdminController extends Controller
     // public function category(){
     //     return view('categories') ;
     // }
->>>>>>> master
     public function index()
     {
         $users = User::paginate(3);
