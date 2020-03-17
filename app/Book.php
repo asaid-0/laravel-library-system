@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
+<<<<<<< HEAD
+=======
+    protected $fillable = [
+        'category_id', 'auther','title','price','copies'
+    ];
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
     public function category()
     {
@@ -26,7 +32,7 @@ class Book extends Model
     }
     public function BookComments(){
 
-        return $this->belongsToMany('App\User', 'user-comment-book', 'book_id', 'user_id');
+        return $this->belongsToMany('App\User', 'user-comment-book', 'book_id', 'user_id')->withPivot('comment','rank','created_at');
 
     }
     public function getCategory(){
@@ -37,4 +43,22 @@ class Book extends Model
             return $this->favoriteFor()->where('users.id', $user->id)->exists();
         return false;
     }
+<<<<<<< HEAD
+=======
+    public function getCopies(){
+        return max($this->copies - $this->leasedBy()->where('leased_until','>',now())->count(), 0);
+    }
+    public function getRelatedBooks(){
+        return self::WHERE('title', 'REGEXP', str_replace(' ', '|', $this->title))->UNION(self::WHERE('category_id', $this->category_id))->limit(10)->get();
+    }
+    public function isLeaseable(){
+        return !$this->leasedBy()->where('user_id',Auth::id())->where('leased_until','>',now())->count();
+    }
+    public function canComment(){
+        return !$this->BookComments()->where('user_id', Auth::id())->count();
+    }
+    public function rating(){
+        return round($this->BookComments()->avg('rank'));
+    }
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 }

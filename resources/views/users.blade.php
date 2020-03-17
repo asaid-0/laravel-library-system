@@ -124,6 +124,7 @@
       <section class="wrapper">
         <div class ="userAlert" style="z-inbox:10000; display:none; background:green; font-weight:450;width:35px ; position:fixed; top:10%; left:5%; color:white; padding:5px 20px"></div>
           <div class="create-table">
+<<<<<<< HEAD
             @csrf
             @if (session()->has('alert'))
             <div class="alert alert-success">
@@ -141,6 +142,10 @@
     @endif
             <h1>All Users</h1>
             <a href="" type="button" class="btn btn-info" id="user" data-toggle="modal" data-target="#users">Add User</a></div>
+=======
+            <h1>All Users</h1>
+            <a href="/register" ><button class="btn btn-primary" id="user">Add user</button></a>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
             <table class="content-table">
                 <thead>
                   <tr>

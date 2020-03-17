@@ -289,7 +289,11 @@ address { font-style: italic; }
 	width:100%;
 	float:left;
 }
+<<<<<<< HEAD
 .tg-sectionspace {padding: 100px 0;}
+=======
+/* .tg-sectionspace {padding: 100px 0;} */
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 .tg-locationmap {
 	width: 100%;
 	float: left;
@@ -859,7 +863,11 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	font-family: 'FontAwesome';
 }
 .tg-middlecontainer {
+<<<<<<< HEAD
 	z-index: 2;
+=======
+	/* z-index: 2; */
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 	width: 100%;
 	float: left;
 	position: relative;
@@ -4164,4 +4172,12 @@ body.tg-comingsoonpage .tg-footerbar{position:static;}
 }
 .love-btn:hover, .love-btn-active{
 	color: #f16945	;
+<<<<<<< HEAD
+=======
+}
+.book-count{
+	background-color: #e3e3e3;
+	border-radius: 40%;
+	padding: 0.3rem;
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 }

@@ -78,7 +78,7 @@
           <li class="sub-menu">
             <a class="active" href="/users">
               <i class="fas fa-users"></i>
-              <span>All Users</span>
+              <span>All categories</span>
               </a>
           </li>
           <li class="sub-menu">
@@ -118,6 +118,21 @@
       <section class="wrapper">
           <div class="create-table">
             <a href=""><button type="button" class="btn btn-primary" id="category">Add category</button></a>
+            @if (session()->has('alert'))
+                <div class="alert alert-success">
+                {{session()->get('alert')}}
+                </div>
+                @endif
+                @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <div><a href="" type="button" class="btn btn-info" style="margin-left:70%" id="category" data-toggle="modal" data-target="#exampleModalCenter">Add new category</a></div>
             <table class="category-table">
                 <thead>
                     <tr>
@@ -125,35 +140,98 @@
                     <th>Category name</th>
                     <th>No. of books</th>
                     <th>Picture</th>
+                    
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                  @foreach ($categories as $category)
+                  <tr>
+                    <td>{{$category->id}}</td>
+                    
+                    <td>{{$category->category_name}}</td>
+                  
+                    <td >
+              
+                      <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+
+        
+        
+                        <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
+       
+                        @csrf
+                        @method('DELETE')
+          
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    </td>
+                  </tr>  
+                  
+                  @endforeach
                 </tbody>
             </table>
           </div>
       </section>
     </section>
     <!--main content end-->
+
+
+    <div class="modal  fade right" id="exampleModalCenter" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add Book</h3></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+          {!! Form::open(['route' => 'categories.store']) !!}
+          <div class="input-group">
+                <div class="input-group-prepend">
+          <div class="form-group">
+            <label for="exampleDropdownFormEmail2">categoryName</label>
+            <input type="text" class="form-control" id="exampleDropdownFormEmail2" name ='category_name' placeholder="categoryname">
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">category_id</label>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2"  name='id' placeholder="Category_id">
+          </div>
+         
+         
+         
+          
+             {{-- <label for="exampleFormControlFile1">Example file input</label>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1"> 
+             --}}
+            </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save Book</button>
+       
+      </div>
+       {!! Form::close() !!}
+    
+    </div>
+  </div>
+</div>  
+ 
     <!--footer start-->
     <footer class="category-footer">
       <div class="text-center">
+<<<<<<< HEAD
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
         </p>
         <div class="credits">
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
+=======
+        
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>

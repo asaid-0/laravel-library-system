@@ -23,6 +23,10 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
+<<<<<<< HEAD
+=======
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 </head>
 
 <body>
@@ -123,8 +127,6 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="col-lg-9 main-chart">
-            <!--CUSTOM CHART START -->
-            <!--custom chart end-->
             <div class="row mt">
               <!-- SERVER STATUS PANELS -->
               <div class="col-md-4 col-sm-4 mb">
@@ -172,6 +174,14 @@
         <!-- /row -->
       </section>
     </section>
+     <!--CUSTOM CHART START -->
+
+     <div>
+      {!! $chart->container() !!}
+      {!! $chart->script() !!}
+    </div>
+  
+    <!--custom chart end-->
     <!--main content end-->
     <!--footer start-->
     <footer class="site-footer">

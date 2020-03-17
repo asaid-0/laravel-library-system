@@ -34,6 +34,16 @@ $(function(){
     closeReviewBtn.hide();
     
   });
+<<<<<<< HEAD
+=======
+  $('.stars').on('click', () => {
+    $('#difficulty-5')[0].checked ? ratingsField.val(5) : 
+    $('#difficulty-4')[0].checked ? ratingsField.val(4) : 
+    $('#difficulty-3')[0].checked ? ratingsField.val(3) : 
+    $('#difficulty-2')[0].checked ? ratingsField.val(2) : 
+    ratingsField.val(1);
+  });
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
   $('.starrr').on('starrr:change', function(e, value){
     ratingsField.val(value);

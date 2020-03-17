@@ -122,9 +122,15 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
+<<<<<<< HEAD
         <div class="admin-table">
           <h1>Admins</h1>
           <a href="" type="button" class="btn btn-info" id="user" data-toggle="modal" data-target="#admin">Add Admin</a>
+=======
+        <div class="create-table">
+          <h1>All Admins</h1>
+          <a href="" type="button" class="btn btn-primary" id="user" data-toggle="modal" data-target="#exampleModal">Add Admin</a>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
           <table class="content-table">
               <thead>
                 <tr>
@@ -140,8 +146,13 @@
                   <td></td>
                   <td></td>
                   <td> 
+<<<<<<< HEAD
                     {{-- <a href=""><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
                     <a href=""><button type="button" class="btn btn-danger"id="delete">Delete</button></a> --}}
+=======
+                    <a href=""><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                    <a href=""><button type="button" class="btn btn-danger"id="delete">Delete</button></a>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
                   </td>
                 </tr>
               </tbody>
@@ -151,6 +162,7 @@
       </section>
     </section>
     <!--main content end-->
+<<<<<<< HEAD
 
 
     <div class="modal  fade right" id="admin" tabindex="-1" role="dialog" 
@@ -201,6 +213,8 @@
       </div>
     </div>  
   
+=======
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     <!--footer start-->
     <footer class="admin-footer">
       <div class="text-center">

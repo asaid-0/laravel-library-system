@@ -16,25 +16,54 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::get('/book', function () {
     return view('book');
 });
+=======
+
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 Route::get('/test', function () {
     return view('welcome');
 });
 Route::resource('userbooks', 'User\BookController');
 Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
 
+<<<<<<< HEAD
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/active_deactive_users/{id}', 'AdminController@active_deactive_users');
 Route::get('/users', 'AdminController@user')->name('users');
 Route::get('users', 'AdminController@index');
 Route::get('/books', 'AdminController@book')->name('books');
+=======
+Route::resource('userbooks', 'User\BookController');
+Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
+Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
+
+Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/admins', 'AdminController@admin')->name('admins');
+// Route::get('changeStatus', 'AdminController@ChangeUserStatus');
+// Route::get('/users', 'AdminController@user')->name('users');
+// Route::get('/books', 'AdminController@book')->name('books');
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 Route::get('/categories', 'AdminController@category')->name('categories');
 Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
 Route::resource('users','AdminController') ;
 Route::resource('UserLeasedBook','UserLeasedBookController') ;
+<<<<<<< HEAD
 Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
 Route::get('addCategory','AdminController@addingCategory');
+=======
+// Route::get('users', 'AdminController@index');
+Route::get('/active_deactive_users/{id}', 'AdminController@active_deactive_users');
+Route::get('/search','User\BookController@search');
+Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
+
+Route::resource('books', 'BookController');
+Route::resource('categories', 'CategoryController');
+
+//Route::get('/test', function(){return view('test');});
+
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 Auth::routes();
 

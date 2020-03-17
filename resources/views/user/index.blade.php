@@ -81,6 +81,7 @@
 			
 			
 		</header>
+<<<<<<< HEAD
 		<!--************************************
 				Header End
 		*************************************-->
@@ -89,15 +90,35 @@
 				Main Start
 		*************************************-->
 		<main id="tg-main" class="tg-main tg-haslayout">
+=======
+		@if (session('status'))
+            <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+		<!--************************************
+				Header End
+		*************************************-->
+		<div style="width: 100%; display: block; float: left; text-align: center; margin: 0; padding: 0">
+			{{$books->links()}}
+		</div>
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main style="margin-top: 2rem" id="tg-main" class="tg-main tg-haslayout">
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 			<!--************************************
 					News Grid Start
 			*************************************-->
 			<div class="tg-sectionspace tg-haslayout">
+<<<<<<< HEAD
 				@if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
+=======
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 				<div class="container">
 					<div class="row">
 						<div id="tg-twocolumns" class="tg-twocolumns">
@@ -112,10 +133,18 @@
 														<div class="form-group">
 															<label>sort by:</label>
 															<span class="tg-select">
+<<<<<<< HEAD
 																<select>
 																	<option>name</option>
 																	<option>name</option>
 																	<option>name</option>
+=======
+																<select onchange="window.location.replace(this.value);">
+																<option hidden disabled selected value>Sort</option>
+																<option value={{ route('userbooks.index', ['sort'=>"title"]) }}>Title</option>
+																<option value={{ route('userbooks.index', ['sort'=>"author"]) }}>Author</option>
+																<option value={{ URL::to('/userbooks')  }}>None</option>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 																</select>
 															</span>
 														</div>
@@ -158,29 +187,53 @@
 													</figure>
 													<div class="tg-postbookcontent">
 														<ul class="tg-bookscategories">
+<<<<<<< HEAD
 														<li><a href="javascript:void(0);">{!! $book->getCategory() !!}</a></li>
 														</ul>
 														<div class="tg-themetagbox">
 															<span class="tg-themetag">{!! $book->copies - $bookLeased->where('book_id',$book->id)->count() !!} copies</span>
+=======
+														<li><a href="javascript:void(0);"> <i class="fa fa-folder"></i> {!! $book->getCategory() !!}</a></li>
+														</ul>
+														<div class="tg-themetagbox">
+															{{-- <span class="tg-themetag">{!! max($book->copies - $bookLeased->where('book_id',$book->id)->count(), 0) !!} copies</span> --}}
+															<span class="tg-themetag">{!! $book->getCopies() !!} copies</span>
+															
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 														</div>
 														
 
 														
 														<div class="tg-booktitle">
+<<<<<<< HEAD
 															<h3><a href="/book" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
 														</div>
 														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->auther !!}</a></span>
+=======
+															<h3><a href="/userbooks/{{$book->id}}" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
+														</div>
+														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->author !!}</a></span>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 														<span class="tg-stars"><span></span></span>
 														<span class="tg-bookprice">
 															<ins>${!! $book->price !!}</ins>
 														</span>
 
+<<<<<<< HEAD
 														@if ($book->copies - $bookLeased->where('book_id',$book->id)->count() == 0)
+=======
+														@if ($book->getCopies() == 0)
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 															<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 																<i class="fa fa-shopping-basket"></i>
 																<em>Unaviable</em>
 															</button>
+<<<<<<< HEAD
 														@elseif (App\Book::find($book->id)->leasedBy()->where('user_id',Auth::id())->get()->count()>0)
+=======
+															{{-- what if need to re-lease ? --}}
+														@elseif (!$book->isLeaseable())
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 														<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 															<em>leased</em>
 														</button>
@@ -226,9 +279,12 @@
 											@empty
 												<p>No Books</p>
 											@endforelse
+<<<<<<< HEAD
 											<div>
 												{{$books->links()}}
 											</div>
+=======
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
 
 										</div>
@@ -238,21 +294,38 @@
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 								<aside id="tg-sidebar" class="tg-sidebar">
 									<div class="tg-widget tg-widgetsearch">
+<<<<<<< HEAD
 										<form class="tg-formtheme tg-formsearch">
+=======
+
+										<form action={{ URL::to('/search') }} method="get" class="tg-formtheme tg-formsearch">
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 											<div class="form-group">
 												<button type="submit"><i class="icon-magnifier"></i></button>
 												<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
 											</div>
 										</form>
+<<<<<<< HEAD
 									</div>
 									<div class="tg-widget tg-catagories">
 										<div class="tg-widgettitle">
 											<h3>Categories</h3>
+=======
+
+									</div>
+									<div class="tg-widget tg-catagories">
+										<div class="tg-widgettitle">
+											<h3><i class="fa fa-folder-open"></i> Categories</h3>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 										</div>
 										<div class="tg-widgetcontent">
 											<ul>
 												@forelse ($categories as $cat)
+<<<<<<< HEAD
 													<li><a href="{{ action('User\BookController@list', $cat) }}"><span>{{$cat->category_name}}</span><em>{{$cat->books()->count()}}</em></a></li>
+=======
+													<li><a href="{{ action('User\BookController@list', $cat) }}"><span>{{$cat->category_name}}</span><em class="book-count">{{$cat->books_count}}</em></a></li>
+>>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 												@empty
 													<p>No categories</p>
 												@endforelse
