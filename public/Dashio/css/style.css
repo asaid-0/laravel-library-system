@@ -422,7 +422,7 @@ ul.sidebar-menu li a.active i {
 
 .wrapper {
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 10px;
     padding-left: 25px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -759,12 +759,9 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .sidebar-closed #main-content {
     margin-left: 0px;
 }
-
 .sidebar-closed #sidebar {
     margin-left: -180px;
 }
-
-
 /* Dash Side */
 
 .ds {
@@ -3357,18 +3354,6 @@ ul.chat-available-user li a:hover {
 .site-footer p {
   margin-bottom: 5px;
 }
-.sit-footer {
-    background: #4ECDC4;
-    color: #fff;
-    padding: 15px 0;
-    margin-top: 27.4em;
-}
-
-.sit-footer p {
-  margin-bottom: 5px;
-}
-
-
 .credits, .credits a {
   color: #fff;
 }
@@ -3391,11 +3376,6 @@ ul.chat-available-user li a:hover {
 .site-min-height {
     min-height: 900px;
 }
-
-
-
-
-
 /* Contact Form */
 
 #contact {
@@ -3554,9 +3534,6 @@ ul.chat-available-user li a:hover {
     margin-top:10px;
     margin-left: 70px;
 }
-.wrapper{
-    margin-top: 17em;
-}
 .list{
     text-decoration: none;
     display: flex;
@@ -3572,9 +3549,9 @@ ul.chat-available-user li a:hover {
 }
 .content-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
-    /* width:110em ; */
+    margin: .025em 7em ;
+    font-size:1em ;
+    width:90% ;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3586,7 +3563,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .content-table th, .content-table td {
-    padding: 1em 11em;
+    padding: 1em 5em;
 }
 .content-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3594,12 +3571,17 @@ ul.chat-available-user li a:hover {
 .content-table tbody tr:last-of-type{
     border-bottom: 2px solid #009879; 
 }
+.create-table h1{
+    color: #009879;
+    margin-top: .1px;
+    text-align: center;
+}
 .users-footer{
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 30.7em;
-    width: 192rem;
+    margin-top:28.1em;
+    width: 190.8rem;
 }
 
 .users-footer p {
@@ -3607,9 +3589,9 @@ ul.chat-available-user li a:hover {
 }
 .books-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
-    /* width:110em ; */
+    margin: 2em 10em ;
+    font-size:1em ;
+    font-weight: bold;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3621,7 +3603,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .books-table th, .books-table td {
-    padding: 1em 5em;
+    padding: 1em 4em;
 }
 .books-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3633,7 +3615,7 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top:30.3em;
+    margin-top:30.8em;
 }
 
 .book-footer p {
@@ -3641,9 +3623,8 @@ ul.chat-available-user li a:hover {
 }
 .category-table{
     border-collapse: collapse;
-    margin: 4em 15em ;
-    font-size:0.9em ;
-    /* width:110em ; */
+    margin: 2em 15em ;
+    font-size:1em ;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
@@ -3655,7 +3636,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .category-table th, .category-table td {
-    padding: 1em 10em;
+    padding: 1em 6em;
 }
 .category-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3668,9 +3649,93 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 30.7em;
-    width: 100%;
+    margin-top: 33.7em;
 }
 .category-footer p {
+    margin-bottom: 5px;
+  }
+.admin-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 38.7em;
+    width: 191.8rem;
+}
+.admin-footer p {
+    margin-bottom: 5px;
+  }
+#user {
+    margin-left: 105em;
+    margin-bottom: 1em;
+}
+#book {
+      margin-left: 98em;
+}
+#category {
+    margin-left: 90em;
+  }
+#edit{
+      margin-left:2em ;
+  }
+.wrapper-update {
+    display: inline-block;
+    width:95em ;
+    height: 40em ;
+    margin-top: 9.5em;
+    margin-left: 1%;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+}
+.wrapper-update h1 {
+    color:#009879;
+}
+.update-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 26.8em;
+    width: 147.5em;
+}
+.update-footer p {
+    margin-bottom: 5px;
+  }
+
+.awesome{
+    margin-left: 5%;
+}
+.userAwesome{
+    margin-left:3% ;
+}
+.emailAwesome{
+    margin-left:5.5% ;
+}
+.passwordAwesome{
+    margin-left:3.5% ;
+}
+.admin-wrapper{
+    display: inline-block;
+    width: 95em;
+    height: 40em;
+    margin-top: 9.5em;
+    margin-left: 20%;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+}
+.admin-wrapper h1{
+    color: #009879;
+    margin-left: 10%;
+}
+.Admin-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 14.6em;
+    width: 147.5em;
+}
+.Admin-footer p {
     margin-bottom: 5px;
   }

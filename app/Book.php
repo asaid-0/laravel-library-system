@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
+    use SoftDeletes;
     
     public function category()
     {
@@ -26,5 +28,13 @@ class Book extends Model
 
         return $this->belongsToMany('App\User', 'user-comment-book', 'book_id', 'user_id');
 
+    }
+    public function getCategory(){
+        return $this->category()->first()->category_name;
+    }
+    public function isFavorite(){
+        if($user = Auth::user())
+            return $this->favoriteFor()->where('users.id', $user->id)->exists();
+        return false;
     }
 }

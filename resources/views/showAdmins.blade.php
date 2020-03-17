@@ -10,19 +10,19 @@
   <title>Admin page</title>
 
   <!-- Favicons -->
-  <link href="Dashio/img/favicon.png" rel="icon">
-  <link href="Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/Dashio/img/favicon.png" rel="icon">
+  <link href="/Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="Dashio/css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="Dashio/lib/gritter/css/jquery.gritter.css" />
+  <link href="/Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/Dashio/css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="/Dashio/lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
-  <link href="Dashio/css/style.css" rel="stylesheet">
-  <link href="Dashio/css/style-responsive.css" rel="stylesheet">
-  <script src="Dashio/lib/chart-master/Chart.js"></script>
+  <link href="/Dashio/css/style.css" rel="stylesheet">
+  <link href="/Dashio/css/style-responsive.css" rel="stylesheet">
+  <script src="/Dashio/lib/chart-master/Chart.js"></script>
 </head>
 
 <body>
@@ -36,11 +36,11 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="" class="logo"><b>ADM<span>IN</span></b></a>
+      <a href="/admins" class="logo"><b>ADM<span>IN</span></b></a>
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">Logout</a></li>
+          <li><a class="logout" href="/login">Logout</a></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -53,7 +53,7 @@
                             <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
                         </ul>
                     </div>
-                </form>
+                  </form>
             </div>
         </div>
     </div>
@@ -122,59 +122,37 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-          <div class="col-lg-9 main-chart">
-            <!--CUSTOM CHART START -->
-            <!--custom chart end-->
-            <div class="row mt">
-              <!-- SERVER STATUS PANELS -->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="grey-panel pn donut-chart">
-                  <div class="grey-header">
-                    <h5>Books</h5>
-                  </div>
-                  <div class="chart mt">
-                </div>
-                <h1>Total No. of books</h1>
-                  </div>
-                <!-- /grey-panel -->
-              </div>
-              <!-- /col-md-4-->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="darkblue-panel pn">
-                  <div class="darkblue-header">
-                    <h5>Members</h5>
-                  </div>
-                  <div class="chart mt">
-                </div>
-                    <h1> Numbers of members</h1>
-                </div>
-                <!--  /darkblue panel -->
-              </div>
-              <!-- /col-md-4 -->
-              <div class="col-md-4 col-sm-4 mb">
-                <!-- REVENUE PANEL -->
-                <div class="green-panel pn">
-                  <div class="green-header">
-                    <h5>Admins</h5>
-                  </div>
-                  <div class="chart mt">
-                  </div>
-                  <h1>Numbers of admins</h1>
-                </div>
-              </div>
-          </div>
-          <!-- /col-lg-9 END SECTION MIDDLE -->
-          <!-- **********************************************************************************************************************************************************
-              RIGHT SIDEBAR CONTENT
-              *********************************************************************************************************************************************************** -->
-          <!-- /col-lg-3 -->
+        <div class="admin-table">
+          <h1>Admins</h1>
+          <a href="/addAdmin"><button class="btn btn-primary" id="user" data-toggle="modal" data-target="#exampleModal">Add Admin</button></a>
+          <table class="content-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Admin name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td> 
+                    {{-- <a href=""><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                    <a href=""><button type="button" class="btn btn-danger"id="delete">Delete</button></a> --}}
+                  </td>
+                </tr>
+              </tbody>
+          </table>
         </div>
         <!-- /row -->
       </section>
     </section>
     <!--main content end-->
     <!--footer start-->
-    <footer class="site-footer">
+    <footer class="admin-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
@@ -190,16 +168,16 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="Dashio/lib/jquery/jquery.min.js"></script>
+  <script src="/Dashio/lib/jquery/jquery.min.js"></script>
 
-  <script src="Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="Dashio/lib/jquery.scrollTo.min.js"></script>
-  <script src="Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="Dashio/lib/jquery.sparkline.js"></script>
+  <script src="/Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="/Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="/Dashio/lib/jquery.scrollTo.min.js"></script>
+  <script src="/Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="/Dashio/lib/jquery.sparkline.js"></script>
   <!--common script for all pages-->
-  <script src="Dashio/lib/common-scripts.js"></script>
-  <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
-  <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
+  <script src="/Dashio/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="/Dashio/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="/Dashio/lib/gritter-conf.js"></script>
 </body>
 </html>

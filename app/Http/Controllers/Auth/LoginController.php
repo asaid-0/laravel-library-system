@@ -37,4 +37,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        if (auth()->attempt(array('username' => $input['username'], 'password' => $input['password']))) {
+            if (auth()->user()->isAdmin == 1) {
+                return redirect()->route('admins');
+            } else {
+                return redirect()->route('userbooks.index');
+            }
+
+        } else {
+            return redirect()->route('login')->with('message', 'These credentials do not match our records.');
+        }
+
+    }
 }

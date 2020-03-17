@@ -10,19 +10,19 @@
   <title>Admin page</title>
 
   <!-- Favicons -->
-  <link href="Dashio/img/favicon.png" rel="icon">
-  <link href="Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/Dashio/img/favicon.png" rel="icon">
+  <link href="/Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="Dashio/css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="Dashio/lib/gritter/css/jquery.gritter.css" />
+  <link href="/Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/Dashio/css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="/Dashio/lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
-  <link href="Dashio/css/style.css" rel="stylesheet">
-  <link href="Dashio/css/style-responsive.css" rel="stylesheet">
-  <script src="Dashio/lib/chart-master/Chart.js"></script>
+  <link href="/Dashio/css/style.css" rel="stylesheet">
+  <link href="/Dashio/css/style-responsive.css" rel="stylesheet">
+  <script src="/Dashio/lib/chart-master/Chart.js"></script>
 </head>
 
 <body>
@@ -115,66 +115,78 @@
         <!-- sidebar menu end-->
       </div>
     </aside>
+
+    
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-          <div class="col-lg-9 main-chart">
-            <!--CUSTOM CHART START -->
-            <!--custom chart end-->
-            <div class="row mt">
-              <!-- SERVER STATUS PANELS -->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="grey-panel pn donut-chart">
-                  <div class="grey-header">
-                    <h5>Books</h5>
-                  </div>
-                  <div class="chart mt">
-                </div>
-                <h1>Total No. of books</h1>
-                  </div>
-                <!-- /grey-panel -->
-              </div>
-              <!-- /col-md-4-->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="darkblue-panel pn">
-                  <div class="darkblue-header">
-                    <h5>Members</h5>
-                  </div>
-                  <div class="chart mt">
-                </div>
-                    <h1> Numbers of members</h1>
-                </div>
-                <!--  /darkblue panel -->
-              </div>
-              <!-- /col-md-4 -->
-              <div class="col-md-4 col-sm-4 mb">
-                <!-- REVENUE PANEL -->
-                <div class="green-panel pn">
-                  <div class="green-header">
-                    <h5>Admins</h5>
-                  </div>
-                  <div class="chart mt">
-                  </div>
-                  <h1>Numbers of admins</h1>
-                </div>
-              </div>
-          </div>
-          <!-- /col-lg-9 END SECTION MIDDLE -->
-          <!-- **********************************************************************************************************************************************************
-              RIGHT SIDEBAR CONTENT
-              *********************************************************************************************************************************************************** -->
-          <!-- /col-lg-3 -->
+<section id="main-content">
+    
+    <section class="admin-wrapper">
+        <h1>Add User</h1>
+    <div class="col-lg-9 main-chart">
+        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content"> --}}
+             {{-- <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+             </div> --}}
+                {{-- <div class="modal-body"> --}}
+                    <div>
+                        @foreach ($errors->all() as $error)
+                        <li class="alert alert-danger">{{$error}}</li>          
+                        @endforeach
+                    </div>
+                    <div>
+                        @if(session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                        @endif
+                    </div>
+                <form action ="{{ route('users.store') }}" method="post">
+                         @csrf
+                        <div class="form-group">
+                            <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <input type="text" name="name" value="{{ old('name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-md-2 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <input type="text" name="userName" value="{{ old('userName') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}">                    
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <input type="password" name="password">                        
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <input type="password" name="password_confirmation" > 
+                        </div>
+                {{-- </div> --}}
+                {{-- <div class="modal-footer"> --}}
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">{{ __('Add') }}</button>
+                        </div>                    
+                {{-- </div> --}}
+                </form>
+        {{-- </div>
         </div>
-        <!-- /row -->
-      </section>
+        </div> --}}
+    </div>
     </section>
+</section>
     <!--main content end-->
     <!--footer start-->
-    <footer class="site-footer">
+    <footer class="Admin-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
@@ -192,14 +204,14 @@
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="Dashio/lib/jquery/jquery.min.js"></script>
 
-  <script src="Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="Dashio/lib/jquery.scrollTo.min.js"></script>
-  <script src="Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="Dashio/lib/jquery.sparkline.js"></script>
+  <script src="/Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="/Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="/Dashio/lib/jquery.scrollTo.min.js"></script>
+  <script src="/Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="/Dashio/lib/jquery.sparkline.js"></script>
   <!--common script for all pages-->
-  <script src="Dashio/lib/common-scripts.js"></script>
-  <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
-  <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
+  <script src="/Dashio/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="/Dashio/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="/Dashio/lib/gritter-conf.js"></script>
 </body>
 </html>
