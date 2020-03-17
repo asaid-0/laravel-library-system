@@ -222,16 +222,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <!--footer start-->
     <footer class="category-footer">
       <div class="text-center">
-<<<<<<< HEAD
-        <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-        </div>
-=======
         
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>

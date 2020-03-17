@@ -23,10 +23,7 @@
   <link href="Dashio/css/style.css" rel="stylesheet">
   <link href="Dashio/css/style-responsive.css" rel="stylesheet">
   <script src="Dashio/lib/chart-master/Chart.js"></script>
-<<<<<<< HEAD
-=======
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 </head>
 
 <body>

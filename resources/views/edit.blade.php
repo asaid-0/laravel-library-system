@@ -136,7 +136,6 @@
             @endif
             {!! Form::open(['route' => ['users.update',$users->id],'method'=>'put']) !!}
             <div class="form-group">  
-<<<<<<< HEAD
               {!! Form::label('name','name',['class'=>'col-md-2 col-form-label text-md-right']) !!}
               {!! Form::text('name' , $users->name) !!}
               </div>
@@ -154,25 +153,6 @@
             </div>
             <div class="form-group">
               {!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
-=======
-              {{ Form::label('name')}}
-              {{ Form::text('name' , $users->name,array('class' => 'awesome')) }}
-              </div>
-            <div class="form-group">  
-            {{ Form::label('username')}}
-            {{ Form::text('userName' , $users->userName ,array('class' => 'userAwesome')) }}
-            </div>
-            <div class="form-group">
-              {{ Form::label('email') }}
-              {{ Form::text('email' , $users->email,array('class' => 'emailAwesome')) }}
-            </div>
-            <div class="form-group">
-              {{ Form::label('Password') }}
-              {{ Form::input('password', 'password', $users->password,array('class' => 'passwordAwesome')) }}
-            </div>
-            <div class="form-group">
-              {{ Form::submit('update' ,["class"=>"btn btn-primary"])}}
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
             </div>
               {!! Form::close() !!}
         </div>

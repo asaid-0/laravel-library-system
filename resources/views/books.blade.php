@@ -118,9 +118,6 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
-<<<<<<< HEAD
-           <a href=""><button type="button" class="btn btn-primary" id="book">Add Book</button></a>
-=======
             
             @if (session()->has('alert'))
             <div class="alert alert-success">
@@ -139,7 +136,6 @@
 
           <a href="" type="button" class="btn btn-info" style="margin-left:120%" id="book" data-toggle="modal" data-target="#exampleModalCenter">Add Book</a></div>
          
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
             <table class="books-table">
                 <thead>
                     <tr>
@@ -148,30 +144,13 @@
                     <th>Category name</th>
                     <th>Author</th>
                     <th>current No.</th>
-<<<<<<< HEAD
-                    <th>Picture</th>
-=======
                     <th>price</th>
                     <th>Picture</th>
                   
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
-                    <tr>
-                        <td>1</td>
-                        <td>aa</td>
-                        <td>rr</td>
-                        <td>pp</td>
-                        <td>20</td>
-                        <td>10</td>
-                        <td></td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-=======
                     
                       @foreach ($books as $book)
                       <tr>
@@ -205,7 +184,6 @@
               
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
                         </td>
                       </tr>  
                       

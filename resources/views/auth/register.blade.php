@@ -11,21 +11,6 @@
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-=======
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -38,7 +23,6 @@
          </div>
          
          <input id="name" placeholder="Full Name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
          @error('name')
              <span class="invalid-feedback" role="alert">
@@ -46,28 +30,6 @@
              </span>
          @enderror
 
-<<<<<<< HEAD
-                        <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">
-                                {{ __('Username') }}
-                            </label>
-                         
-                            <div class="col-md-6">
-                                <input id="username" type="text"
-                                       class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                                       name="username" value="{{ old('username') }}" required>
-                         
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-=======
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -83,7 +45,6 @@
                 <strong>{{ $errors->first('username') }}</strong>
             </span>
         @endif
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
 
     </div> <!-- form-group// -->

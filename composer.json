@@ -17,12 +17,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-<<<<<<< HEAD
-        "laravelcollective/html": "^6.1"
-=======
         "laravelcollective/html": "^6.1",
         "nesbot/carbon": "^2.31"
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     },
     "require-dev": {
         "facade/ignition": "^2.0",

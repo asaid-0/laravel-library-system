@@ -49,28 +49,6 @@ padding : 90px 150px;
   <div class="form-group">
     <label for="username" class="text-uppercase">Username</label>
 
-<<<<<<< HEAD
-                <div class="card-body">
-                    @if (session('message'))
-                        <div class="alert alert-danger">{{ session('message') }}</div>
-                    @endif
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-=======
     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
     @error('username')
@@ -85,7 +63,6 @@ padding : 90px 150px;
     <label for="password" class="text-uppercase">Password</label>
 
     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
 
     @error('password')
