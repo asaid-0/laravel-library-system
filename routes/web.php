@@ -27,12 +27,13 @@ Route::get('/test', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admins', 'AdminController@admin')->name('admins');
 Route::get('/users', 'AdminController@user')->name('users');
-Route::get('/books', 'AdminController@book')->name('books');
+// Route::get('/books', 'AdminController@book')->name('books');
 Route::get('/categories', 'AdminController@category')->name('categories');
 Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
+Route::resource('books', 'BookController');
+Route::resource('categories', 'CategoryController');
 
-
-
+//Route::get('/test', function(){return view('test');});
 
 Auth::routes();
 

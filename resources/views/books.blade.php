@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
+  
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
   <title>Book page</title>
 
@@ -117,7 +118,24 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
-           <a href=""><button type="button" class="btn btn-primary" id="book">Add Book</button></a>
+            
+            @if (session()->has('alert'))
+            <div class="alert alert-success">
+            {{session()->get('alert')}}
+            </div>
+            @endif
+            @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+          <a href="" type="button" class="btn btn-info" style="margin-left:120%" id="book" data-toggle="modal" data-target="#exampleModalCenter">Add Book</a></div>
+         
             <table class="books-table">
                 <thead>
                     <tr>
@@ -125,31 +143,131 @@
                     <th>Title</th>
                     <th>Category name</th>
                     <th>Author</th>
-                    <th>No. copies</th>
                     <th>current No.</th>
+                    <th>price</th>
                     <th>Picture</th>
+                  
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>aa</td>
-                        <td>rr</td>
-                        <td>pp</td>
-                        <td>20</td>
-                        <td>10</td>
-                        <td></td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                    
+                      @foreach ($books as $book)
+                      <tr>
+                        <td>{{$book->id}}</td>
+                        <td>{{$book->title}}</td>
+                        {{-- <td>{{$book->category->category_name}}</td> --}}
+                      <td>{{$book->category->category_name}}</td>
+                        <td>all</td>
+                        <td>{{$book->auther}}</td>
+                        <td>{{$book->copies}}</td>
+                        <td>{{$book->price}}</td>
+                        <td><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fbooks%2F&psig=AOvVaw06fbJFxBhm9_0YuEfslGip&ust=1584189370601000&source=images&cd=vfe&ved=2ahUKEwjm5ua2u5foAhUO8RoKHdJ3CVQQr4kDegUIARCPAg" alt="not found"></td>
+                        
+                        <td >
+                      
+                          
+                          {{-- <a  type="button" class="btn btn-info" href={{ route("books.edit",$book->id) }} >Edit</a>
+                          <form action="{{ route('books.destroy', $book->id)}}" method="post">
+                            
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                          </form> --}}
+                          <form action="{{ route('books.destroy',$book->id) }}" method="POST">
+   
+            
+            
+                            <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
+           
+                            @csrf
+                            @method('DELETE')
+              
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                         </td>
-                    </tr>
+                      </tr>  
+                      
+                      @endforeach
+                        
+                    
                 </tbody>
             </table>
           </div>
       </section>
     </section>
+
+
+
+
+
+    <!-- Button trigger modal -->
+
+
+<!-- Modal for inser data -->
+
+   <div class="modal  fade right" id="exampleModalCenter" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add Book</h3></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+          {!! Form::open(['route' => 'books.store']) !!}
+          <div class="input-group">
+                <div class="input-group-prepend">
+          <div class="form-group">
+            <label for="exampleDropdownFormEmail2">Book title</label>
+            <input type="text" class="form-control" id="exampleDropdownFormEmail2" name ='title' placeholder="title">
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">category_id</label>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2"  name='category_id' placeholder="Category_id">
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">author</label>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='author' placeholder="AuthorName">
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">price</label>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='price' placeholder="price">
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">Available copies</label>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='copies'placeholder="Number for copies">
+          </div>
+         
+          <div class="form-group">
+            <label for="exampleDropdownFormPassword2">Uploade Book</label>
+            <input type="file" class="form-control" id="exampleDropdownFormPassword2"name='avater' placeholder="book">
+          </div>
+             {{-- <label for="exampleFormControlFile1">Example file input</label>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1"> 
+             --}}
+            </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save Book</button>
+       
+      </div>
+       {!! Form::close() !!}
+    
+    </div>
+  </div>
+</div>  
+ 
+
+
+     
+    
+    <!-- Button trigger modal -->
+
+     
     <!--main content end-->
     <!--footer start-->
     <footer class="books-footer">
@@ -179,5 +297,33 @@
   <script src="Dashio/lib/common-scripts.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
+
+ 
+
+<!-- Modal -->
+
 </body>
+
+
+<script>
+
+$(document).on('show.bs.modal','#exampleModalCenter2',function(event{
+// var button=$(event.relatedTarget  )
+// var title=button.data('title')
+// var copies=button.data('copies')
+// var book_id=button.data('book_id')
+// var Category_id=button.data('category_id')
+// var author=button.data('author')
+// var price=button.data('price')
+// var modal=$(this)
+//  modal.find('.exampleModalCenter2').text('rrrrr')
+//  modal.find('.modal-body #title').val($title)
+alert('hi');
+
+
+}))
+
+
+
+</script>
 </html>

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
+    protected $fillable = [
+        'category_id', 'auther','title','price','copies'
+    ];
 
     public function category()
     {

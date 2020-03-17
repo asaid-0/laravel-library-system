@@ -17,15 +17,15 @@ class AdminController extends Controller
         return view('admins');
     }
     
-    public function user(){
-        return view('users');
-    }
-    public function book(){
-        return view('books') ;
-    }
-    public function category(){
-        return view('categories') ;
-    }
+    // public function user(){
+    //     return view('users');
+    // }
+    // public function book(){
+    //     return view('books') ;
+    // }
+    // public function category(){
+    //     return view('categories') ;
+    // }
     public function index()
     {
         //
