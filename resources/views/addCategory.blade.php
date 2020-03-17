@@ -140,23 +140,7 @@
                     <form action ="" method="post">
                         <div class="form-group">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('category name') }}</label>
-                            <input type="text" name="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="col-md-2 col-form-label text-md-right">{{ __('Username') }}</label>
-                            <input type="text" name="userName"> 
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                            <input type="text" name="email">                        
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
-                            <input type="password" name="password">                        
-                        </div>
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                            <input type="password" name="cPassword"> 
+                            <input type="text" name="category_name">
                         </div>
                 {{-- </div> --}}
                 {{-- <div class="modal-footer"> --}}

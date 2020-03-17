@@ -1,0 +1,106 @@
+body {
+    counter-reset: item;
+  }
+  .carousel-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+  }
+  .carousel-inner {
+    height: 100%;
+    position: relative;
+    padding: 0 0 0 50px;
+    left: 0;
+    margin: 0;
+    transition: all 1s;
+  }
+  .carousel-inner .item {
+    height: 100%;
+    float: left;
+    list-style: none;
+    padding: 0;  
+    margin: 0 2rem 0 0;  
+  }
+
+  .carousel-left, .carousel-right {
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;  
+  }
+  .slider-btn {
+    /* content: ""; */
+    /* background: #666; */
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 40%;
+    padding: 0 1rem;
+    font-size: 2rem;
+    color: #7e7e7e;
+    opacity: 0.7;
+  }
+  .carousel-left:hover:before, .carousel-right:hover:before {
+    opacity: 0.8;
+  }
+  .carousel-left {
+    left: 0;
+  }
+  .carousel-right {
+    right: 0;
+  }
+  
+  /*Demo styles*/
+  
+  .carousel-wrapper {  
+    /* background: #055252; */
+    /* background-color: #2f2f2f; */
+    /* background-color: rgba(0, 0, 0, 0.01); */
+    padding: 30px 0;
+  }
+  .carousel-inner .item {
+    /* background: #f0f0f0; */
+    /* padding: 1em 2em; */
+    font-size: 1.2em;
+    box-sizing: border-box;
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .carousel-left:before, .carousel-right:before {
+    background: url(https://i.imgur.com/Ej5hS07.png) no-repeat;
+    width: 50px;
+  }
+  .carousel-left:before {
+    left: 0;
+    background-position: -20% center;
+  }
+  .carousel-right:before {
+    right: 0;
+    background-position: -40px center;
+  }
+  footer{
+    width: 100%;
+  }
+  .item  div {
+      margin: 0;
+      padding: 0;
+  }
+  .book-info, .image-container {
+      height: 100%;
+  }
+  .item img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .book-info{
+      padding: 1rem !important;
+  }
+  .book-info *{
+      float: none !important;
+  }
+  .carousel-right{
+      
+  }

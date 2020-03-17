@@ -422,7 +422,7 @@ ul.sidebar-menu li a.active i {
 
 .wrapper {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 9.5em;
     padding-left: 25px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -559,7 +559,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .dropdown-menu.tasks-bar .task-info .percent {
     display: inline-block;
-    float: right;
+    float:right;
     font-size: 13px;
     font-weight: 600;
     padding-left: 10px;
@@ -759,9 +759,12 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .sidebar-closed #main-content {
     margin-left: 0px;
 }
+
 .sidebar-closed #sidebar {
     margin-left: -180px;
 }
+
+
 /* Dash Side */
 
 .ds {
@@ -3348,7 +3351,7 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 21em;
+    margin-top: 32.8em;
 }
 
 .site-footer p {
@@ -3563,7 +3566,7 @@ ul.chat-available-user li a:hover {
     font-weight: bold;
 }
 .content-table th, .content-table td {
-    padding: 1em 5em;
+    padding: 1em 7em;
 }
 .content-table tbody tr {
     border-bottom: 1px solid white ;
@@ -3580,8 +3583,8 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top:28.1em;
-    width: 190.8rem;
+    margin-top:38.3em;
+    width: 191.9rem;
 }
 
 .users-footer p {
@@ -3615,7 +3618,8 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top:30.8em;
+    margin-top:38.3em;
+    width: 191.8rem;
 }
 
 .book-footer p {
@@ -3649,17 +3653,22 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 33.7em;
+    margin-top: 38.7em;
+    width: 191.8rem;
 }
 .category-footer p {
     margin-bottom: 5px;
   }
+.admin-table h1{
+    text-align: center;
+    color:#009879 ;
+}
 .admin-footer{
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 38.7em;
-    width: 191.8rem;
+    margin-top: 38.8em;
+    width: 191.9rem;
 }
 .admin-footer p {
     margin-bottom: 5px;
@@ -3682,7 +3691,7 @@ ul.chat-available-user li a:hover {
     width:95em ;
     height: 40em ;
     margin-top: 9.5em;
-    margin-left: 1%;
+    margin-left: 20%;
     padding-left: 25px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -3695,7 +3704,7 @@ ul.chat-available-user li a:hover {
     background: #4ECDC4;
     color: #fff;
     padding: 15px 0;
-    margin-top: 26.8em;
+    margin-top: 14.6em;
     width: 147.5em;
 }
 .update-footer p {

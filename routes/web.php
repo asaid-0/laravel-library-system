@@ -34,8 +34,7 @@ Route::get('/categories', 'AdminController@category')->name('categories');
 Route::get('admins', 'AdminController@adminHome')->middleware('isAdmin')->name('admins');
 Route::resource('users','AdminController') ;
 Route::resource('UserLeasedBook','UserLeasedBookController') ;
-Route::get('/showAdmins','AdminController@admin')->name('showAdmins') ;
-
-
+Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
+Route::get('addCategory','AdminController@addingCategory');
 Auth::routes();
 
