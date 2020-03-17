@@ -1,19 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-<<<<<<< HEAD
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth ;
-use App\User ;
-class AdminController extends Controller
-{
-    public function adminHome()
-    {
-        return view('admins');
-=======
 use App\Charts\ProfitPerWeek;
 use App\User;
 use Illuminate\Http\Request;
@@ -37,12 +27,10 @@ class AdminController extends Controller
         $chart->displayLegend(false);
 
         return view('admins', compact('chart'));
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
     public function adminsPage()
     {
         return view('showAdmins') ;
-<<<<<<< HEAD
     }   
     public function user(){
         return view('users');
@@ -57,31 +45,6 @@ class AdminController extends Controller
     {
         return view('addCategory');
     }
-=======
-    }
-    public function user()
-    {
-        return view('users');
-    }
-    public function book()
-    {
-        return view('books');
-    }
-    public function category()
-    {
-        return view('categories');
-    }
-    
-    // public function user(){
-    //     return view('users');
-    // }
-    // public function book(){
-    //     return view('books') ;
-    // }
-    // public function category(){
-    //     return view('categories') ;
-    // }
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     public function index()
     {
         $users = User::paginate(3);
@@ -93,7 +56,6 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function active_deactive_users ($id)
     {
         $users =User::find($id);
@@ -112,23 +74,6 @@ class AdminController extends Controller
         }
     }
  
-=======
-    public function active_deactive_users($id)
-    {
-        $users = User::find($id);
-        if ($users->isActive == 1) {
-            $users->isActive = 0;
-        } else {
-            $users->isActive = 1;
-        }
-        if ($users->save()) {
-            echo json_encode("success");
-        } else {
-            echo json_encode("failed");
-        }
-    }
-
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     public function create()
     {
         //
@@ -142,7 +87,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $validateData = $request->validate([
             'name'  => 'required|unique:users|string|min:3',
             'userName'=>'required|unique:users|string|min:3',
@@ -157,9 +101,6 @@ class AdminController extends Controller
            $users->password = Hash::make($request->password) ;
            $users->save() ;
           return redirect()->action('AdminController@index')->with('message', "user has been added successfully") ;
-=======
-        //
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     /**
@@ -181,11 +122,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
         return view('edit', ['users'=> \App\User::find($id)]);
-=======
-        return view('edit', ['users' => \App\User::find($id)]);
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     /**
@@ -195,21 +132,14 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function update(Request $request,$id)
     {
-=======
-    public function update(Request $request,$user)
-    {
-        $input=$request->except('_method','_token');
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
         $validateData = $request->validate([
             'name'=>'required|min:3', 
             'userName'=> 'required|min:3|unique:users,id',
             'email'=>'required|email|unique:users,id',
             'password'=>'required|min:8'
         ]);
-<<<<<<< HEAD
         $users = new User ;
         $users =User::find($id);
         $users->name = $request->name ;
@@ -218,10 +148,6 @@ class AdminController extends Controller
         $users->password = Hash::make($request->password) ;
         $users->update() ;
         return redirect()->action('AdminController@index')->with('message', "user has been updated successfully");;
-=======
-        User::where('id',$user)->update($input);
-        return redirect()->action('AdminController@index')->with('message', "Phone has been updated successfully");;
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     /**
