@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
-<<<<<<< HEAD
-=======
     protected $fillable = [
         'category_id', 'auther','title','price','copies'
     ];
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 
     public function category()
     {
@@ -43,8 +40,6 @@ class Book extends Model
             return $this->favoriteFor()->where('users.id', $user->id)->exists();
         return false;
     }
-<<<<<<< HEAD
-=======
     public function getCopies(){
         return max($this->copies - $this->leasedBy()->where('leased_until','>',now())->count(), 0);
     }
@@ -60,5 +55,4 @@ class Book extends Model
     public function rating(){
         return round($this->BookComments()->avg('rank'));
     }
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 }

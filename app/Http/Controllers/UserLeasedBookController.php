@@ -45,11 +45,7 @@ class UserLeasedBookController extends Controller
         $newLease->leased_until = Carbon::now()->add($request->NumofDays,'day');
         $newLease->save();
 
-<<<<<<< HEAD
-        return redirect()->route('userbooks.index')->with("status", "book leased successfully");
-=======
         return redirect()->back()->with("status", "book leased successfully");
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     

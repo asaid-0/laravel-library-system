@@ -1,11 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-<<<<<<< HEAD
-
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
@@ -20,12 +16,6 @@ class BookController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
-        $categories = Category::paginate(10);
-        $books = Book::paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
-=======
         // $books = Book::paginate(12);
         $books = new Book;
         if (request()->has('sort')){
@@ -38,7 +28,6 @@ class BookController extends Controller
         // $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
         return view('user.index', ['books' => $books, 'categories' => $categories]);
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     /**
@@ -70,11 +59,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
-        echo $id;
-=======
         return view('user.book', ['book' => Book::find($id)]);
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 
     /**
@@ -100,8 +85,6 @@ class BookController extends Controller
         //
     }
 
-<<<<<<< HEAD
-=======
     public function search(Request $request)
     {
         $validateData = $request->validate([
@@ -113,7 +96,6 @@ class BookController extends Controller
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     /**
      * Remove the specified resource from storage.
      *
@@ -124,15 +106,6 @@ class BookController extends Controller
     {
         //
     }
-<<<<<<< HEAD
-    
-    public function list(Category $cat)
-    {
-        $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
-        $categories = Category::paginate(10);
-        $books = $cat->books()->paginate(12);
-        return view('user.index', ['books' => $books, 'categories' => $categories, 'bookLeased'=>$bookLeased]);
-=======
     public function comment(Request $request, Book $book){
         if($book->canComment()){
             $book->BookComments()->attach(Auth::id(), ['comment' => $request->comment, 'rank' => $request->rating]);
@@ -144,6 +117,5 @@ class BookController extends Controller
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
         $books = $cat->books()->paginate(12);
         return view('user.index', ['books' => $books, 'categories' => $categories]);
->>>>>>> 6b52520a29c68f83756602b0bc9140c83c473c5d
     }
 }
