@@ -13,18 +13,20 @@ class ProfileController extends Controller
         return view('user.profile');
     }
     public function update(Request $request){
-        $request->validate([
+        $user = Auth::user();
+        $validation = [
             'name'=>'required|min:3', 
             'userName'=> 'required|min:3|unique:users,id',
             'email'=>'required|email|unique:users,id',
-            'password'=>'required|min:8'
-        ]);
-        
-        $user = Auth::user();
+        ];
+        if(!($request->password == 'oldpwd' && $request->password_confirmation == 'oldpwd')){
+            $validation['password'] = 'required|confirmed|min:8';
+            $user->password = Hash::make($request->password);
+        }
+        $request->validate($validation);
         $user->name = $request->name;
         $user->userName = $request->userName;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
         echo $user->save();
         die();
         return back()->with('status', 'Profile has been updated successfuly');

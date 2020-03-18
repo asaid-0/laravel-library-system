@@ -148,13 +148,16 @@
 												</div>
 												<div class="form-group">
 													{!! Form::label('password','Password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
-													{{ Form::input('password', 'password',null,array('class' => 'passwordAwesome')) }}
+													{{ Form::input('password', 'password','oldpwd',array('class' => 'passwordAwesome', 'autocomplete' => 'off')) }}
+													<span class="text-primary">Leave for old password</span>
+
 												</div>
 												<div class="form-group">
-													{!! Form::label('cpassword','Confirm Password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
-													{{ Form::input('cpassword', 'cpassword2',null,array('class' => 'passwordAwesome')) }}
+													{!! Form::label('password_confirmation','Confirm Password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+													{{ Form::input('password', 'password_confirmation','oldpwd',array('class' => 'passwordAwesome')) }}
 												</div>
 												<div class="form-group">
+													{!! Form::label('', '', ['class'=>'col-md-2 col-form-label text-md-right']) !!}
 													{!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
 												</div>
 
