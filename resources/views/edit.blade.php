@@ -149,7 +149,7 @@
             </div>
             <div class="form-group">
               {{ Form::label('Password') }}
-              {{ Form::input('password', 'password',null,array('class' => 'passwordAwesome')) }}
+              {{ Form::input('password', 'password',$users->password,array('class' => 'passwordAwesome')) }}
             </div>
             <div class="form-group">
               {!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
