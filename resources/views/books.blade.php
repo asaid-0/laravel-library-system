@@ -161,7 +161,7 @@
                       <td>{{ $book->author }}</td>
                         <td>{{$book->copies}}</td>
                         <td>{{$book->price}}</td>
-                      <td><img style="width: 95px; height: auto" src="{{asset('/bookimage').'/'.$book['pic-path']}}" alt="not found"></td>
+                      <td><img style="width: 95px; height: auto" src="{{asset('/bookimage').'/'.$book->pic_path}}" alt="not found"></td>
                         
                         <td>
                       

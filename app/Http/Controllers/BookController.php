@@ -65,7 +65,7 @@ class BookController extends Controller
        $imageName=time().'.'.$request->avater->extension();
        $request->avater->move(public_path('/bookimage') ,$imageName);
     //    $request['avater']=asset('/bookimage').$imageName; 
-       $book['pic-path'] = $imageName;
+       $book->pic_path = $imageName;
        $book->title=$request->title;
        $book->copies=$request->copies;
        $book->price=$request->price;
