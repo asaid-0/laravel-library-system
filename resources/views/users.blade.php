@@ -125,9 +125,9 @@
         <div class ="userAlert" style="z-inbox:10000; display:none; background:green; font-weight:450;width:35px ; position:fixed; top:10%; left:5%; color:white; padding:5px 20px"></div>
           <div class="create-table">
             @csrf
-            @if (session()->has('alert'))
+            @if (session('status'))
             <div class="alert alert-success">
-            {{session()->get('alert')}}
+              {{ session('status') }}
             </div>
             @endif
             @if ($errors->any())

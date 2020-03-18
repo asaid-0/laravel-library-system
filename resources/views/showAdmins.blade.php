@@ -245,7 +245,7 @@
                   <td>{{ $admin->userName }}</td>
                   <td>{{ $admin->email }}</td>
                   <td> 
-                    <a href=""><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                    <a href="{{ route('users.edit',$admin->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
                     {!! Form::open(['route' => ['users.destroy', $admin->id], 'method' => 'delete']) !!}
                     <button type="submit" class="btn btn-danger"id="delete">Delete</button>
                     {!! Form::close() !!}

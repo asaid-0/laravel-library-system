@@ -137,7 +137,7 @@ class AdminController extends Controller
            $users->email = $request->email ;
            $users->password = Hash::make($request->password) ;
            $users->save() ;
-          return redirect()->action('AdminController@index')->with('message', "user has been added successfully") ;
+          return redirect()->action('AdminController@adminsPage')->with('status', "user has been added successfully") ;
     }
 
     /**
@@ -184,7 +184,10 @@ class AdminController extends Controller
         $users->email = $request->email ;
         $users->password = Hash::make($request->password) ;
         $users->update() ;
-        return redirect()->action('AdminController@index')->with('message', "user has been updated successfully");;
+        if ($users->isAdmin==1){
+            return redirect()->route('showAdmins')->with('status', "user has been updated successfully");;
+        }
+        return redirect()->action('AdminController@index')->with('status', "user has been updated successfully");;
     }
     
 
