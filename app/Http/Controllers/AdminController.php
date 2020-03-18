@@ -63,13 +63,15 @@ class AdminController extends Controller
     {
         return view('users');
     }
-    public function book()
-    {
-        return view('books');
+    public function book(){
+        return view('books') ;
     }
-    public function category()
+    public function category(){
+        return view('categories') ;
+    }
+    public function addingCategory()
     {
-        return view('categories');
+        return view('addCategory');
     }
     public function addingCategory()
     {
@@ -96,21 +98,24 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function active_deactive_users($id)
+    public function active_deactive_users ($id)
     {
-        $users = User::find($id);
-        if ($users->isActive == 1) {
-            $users->isActive = 0;
-        } else {
-            $users->isActive = 1;
+        $users =User::find($id);
+        if($users->isActive == 1)
+        {
+            $users->isActive = 0 ;
         }
-        if ($users->save()) {
-            echo json_encode("success");
-        } else {
+        else{
+            $users->isActive = 1 ;
+        }
+        if($users->save()){
+            echo json_encode("success") ;
+        }
+        else{
             echo json_encode("failed");
         }
     }
-
+ 
     public function create()
     {
         //
@@ -159,7 +164,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        return view('edit', ['users' => \App\User::find($id)]);
+        return view('edit', ['users'=> \App\User::find($id)]);
     }
 
     /**
