@@ -15,9 +15,9 @@ class ProfileController extends Controller
     public function update(Request $request){
         $user = Auth::user();
         $validation = [
-            'name'=>'required|min:3', 
-            'userName'=> 'required|min:3|unique:users,id',
-            'email'=>'required|email|unique:users,id',
+            'name'  => 'required|string|min:3',
+            'userName'=>'required|unique:users,userName,NULL,id,deleted_at,NULL|string|min:3',
+            'email'=>'required|email|unique:users,email,NULL,id,deleted_at,NULL',
         ];
         if(!($request->password == 'oldpwd' && $request->password_confirmation == 'oldpwd')){
             $validation['password'] = 'required|confirmed|min:8';

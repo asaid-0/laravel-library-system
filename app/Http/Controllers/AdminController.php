@@ -44,9 +44,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,NULL,id,deleted_at,NULL'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => 'required|string|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users,userName,NULL,id,deleted_at,NULL',
         ]);
 
         User::create([
@@ -127,9 +127,9 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name'  => 'required|unique:users|string|min:3',
-            'userName'=>'required|unique:users|string|min:3',
-            'email'=>'required|email|unique:users',
+            'name'  => 'required|string|min:3',
+            'userName'=>'required|unique:users,userName,NULL,id,deleted_at,NULL|string|min:3',
+            'email'=>'required|email|unique:users,email,NULL,id,deleted_at,NULL',
             'password'=>'required|min:8|confirmed'
             ]);
            $users = new User ;
@@ -175,8 +175,8 @@ class AdminController extends Controller
     {
         $validateData = $request->validate([
             'name'=>'required|min:3', 
-            'userName'=> 'required|min:3|unique:users,id',
-            'email'=>'required|email|unique:users,id',
+            'userName'=> "required|min:3|unique:users,userName,{$id},id,deleted_at,NULL",
+            'email'=>"required|email|unique:users,email,{$id},id,deleted_at,NULL",
             'password'=>'required|min:8'
         ]);
         $users = new User ;

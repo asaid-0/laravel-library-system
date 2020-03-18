@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $request->validate([
             
             'id'=>['required','numeric','unique:categories'],
-            'category_name'=>['required','unique:categories']
+            'category_name'=>['required','unique:categories,category_name,NULL,id,deleted_at,NULL']
             
             
         ]);
@@ -96,9 +96,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_name'=>['required']
-             
-            
+            'category_name'=>['required',"unique:categories,category_name,{$id},id,deleted_at,NULL"]
         ]);
         
 

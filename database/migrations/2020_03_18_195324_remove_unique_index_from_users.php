@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenamePicPathColumn extends Migration
+class RemoveUniqueIndexFromUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class RenamePicPathColumn extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->renameColumn("`pic-path`", 'pic_path');
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropUnique('users_email_unique');
         });
     }
 
@@ -26,9 +25,8 @@ class RenamePicPathColumn extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            //
-            $table->renameColumn('pic_path', "`pic-path`");
+        Schema::table('users', function (Blueprint $table) {
+            $table->unique('email');
         });
     }
 }
