@@ -162,9 +162,9 @@
                         <td>{{$book->auther}}</td>
                         <td>{{$book->copies}}</td>
                         <td>{{$book->price}}</td>
-                        <td><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fbooks%2F&psig=AOvVaw06fbJFxBhm9_0YuEfslGip&ust=1584189370601000&source=images&cd=vfe&ved=2ahUKEwjm5ua2u5foAhUO8RoKHdJ3CVQQr4kDegUIARCPAg" alt="not found"></td>
+                      <td><img src="{{asset('/bookimage').'/'.$book->pic_path}}" alt="not found"></td>
                         
-                        <td >
+                        <td>
                       
                           
                           {{-- <a  type="button" class="btn btn-info" href={{ route("books.edit",$book->id) }} >Edit</a>
@@ -217,7 +217,9 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       </div>
       <div class="modal-body">
        
-          {!! Form::open(['route' => 'books.store']) !!}
+          {!! Form::open(['route' => 'books.store','enctype'=>'multipart/form-data', 'files' => true ]) !!}
+          {{-- {!! Form::open( [ 'route' =>'books.store' , 'files' => true ] ) !!} --}}
+
           <div class="input-group">
                 <div class="input-group-prepend">
           <div class="form-group">
