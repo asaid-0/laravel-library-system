@@ -43,6 +43,15 @@ Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
 Route::resource('books', 'BookController');
 Route::resource('categories', 'CategoryController');
 
+
+
+//
+Route::get('/admin_books', 'AdminController@book')->name('books');
+Route::get('/admin_categories', 'AdminController@category')->name('categories');
+Route::get('addCategory','AdminController@addingCategory');
+
+//
+
 //Route::get('/test', function(){return view('test');});
 
 Auth::routes();

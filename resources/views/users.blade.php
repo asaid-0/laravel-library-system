@@ -124,8 +124,23 @@
       <section class="wrapper">
         <div class ="userAlert" style="z-inbox:10000; display:none; background:green; font-weight:450;width:35px ; position:fixed; top:10%; left:5%; color:white; padding:5px 20px"></div>
           <div class="create-table">
+            @csrf
+            @if (session()->has('alert'))
+            <div class="alert alert-success">
+            {{session()->get('alert')}}
+            </div>
+            @endif
+            @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
             <h1>All Users</h1>
-            <a href="/register" ><button class="btn btn-primary" id="user">Add user</button></a>
+            <a href="" type="button" class="btn btn-info" id="user" data-toggle="modal" data-target="#users">Add User</a></div>
             <table class="content-table">
                 <thead>
                   <tr>
@@ -156,6 +171,55 @@
       </section>
     </section>
     <!--main content end-->
+
+
+    <div class="modal  fade right" id="users" tabindex="-1" role="dialog" 
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add User</h3></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           
+              {!! Form::open(['route' => 'users.store']) !!}
+              <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="form-group">
+                        <label for="exampleDropdownFormPassword2" class="col-md-6 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <input type="text" name="name" value="{{ old('name') }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormPassword2" class="col-md-6 col-form-label text-md-right">{{ __('Username') }}</label>
+                      <input type="text" name="userName" value="{{ old('userName') }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleDropdownFormPassword2" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}">                    
+                </div>
+                <div class="form-group">
+                  <label for="exampleDropdownFormPassword2" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
+                  <input type="password" name="password">                        
+              </div>
+              <div class="form-group">
+                <label for="exampleDropdownFormPassword2" class="col-md-6 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                <input type="password" name="password_confirmation" id="exampleDropdownFormPassword2"> 
+            </div>
+                </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Add</button>
+           
+          </div>
+           {!! Form::close() !!}
+        
+        </div>
+      </div>
+    </div>
     <!--footer start-->
     <footer class="users-footer">
       <div class="text-center">

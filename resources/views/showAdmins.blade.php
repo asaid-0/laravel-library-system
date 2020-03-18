@@ -224,6 +224,9 @@
 
 
           {{-- modal end --}}
+        <div class="admin-table">
+          <h1>Admins</h1>
+          <a href="" type="button" class="btn btn-info" id="user" data-toggle="modal" data-target="#admin">Add Admin</a>
           <table class="content-table">
               <thead>
                 <tr>
@@ -256,6 +259,56 @@
       </section>
     </section>
     <!--main content end-->
+
+
+    <div class="modal  fade right" id="admin" tabindex="-1" role="dialog" 
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add Admin</h3></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           
+              {!! Form::open() !!}
+              <div class="input-group">
+                    <div class="input-group-prepend">
+                    <div class="form-group">
+                        <label for="name" class="col-md-6 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <input type="text" name="Name" value="{{ old('name') }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-md-6 col-form-label text-md-right">{{ __('Admin name') }}</label>
+                      <input type="text" name="userName" value="{{ old('userName') }}"> 
+                  </div>
+                  <div class="form-group">
+                      <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                      <input type="text" name="email" value="{{ old('email') }}">                        
+                  </div>
+                  <div class="form-group">
+                      <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
+                      <input type="password" name="password">                        
+                  </div>
+                  <div class="form-group">
+                      <label for="password-confirm" class="col-md-6 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                      <input type="password" name="password_confirmation"> 
+                  </div>
+                </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Add</button>
+           
+          </div>
+           {!! Form::close() !!}
+        
+        </div>
+      </div>
+    </div>  
+  
     <!--footer start-->
     <footer class="admin-footer">
       <div class="text-center">
