@@ -73,10 +73,7 @@ class AdminController extends Controller
     {
         return view('addCategory');
     }
-    public function addingCategory()
-    {
-        return view('addCategory');
-    }
+
     
     // public function user(){
     //     return view('users');

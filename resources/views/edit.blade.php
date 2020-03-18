@@ -148,13 +148,8 @@
               {!! Form::text('email' , $users->email) !!}
             </div>
             <div class="form-group">
-<<<<<<< HEAD
               {{ Form::label('Password') }}
               {{ Form::input('password', 'password',null,array('class' => 'passwordAwesome')) }}
-=======
-              {!! Form::label('Password','password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
-              {!! Form::input('password', 'password', $users->password) !!}
->>>>>>> cfc6cff995f42130ad83674d367a3488f7fc82b6
             </div>
             <div class="form-group">
               {!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
