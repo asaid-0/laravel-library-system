@@ -117,6 +117,7 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
+            <a href=""><button type="button" class="btn btn-primary" id="category">Add category</button></a>
             @if (session()->has('alert'))
                 <div class="alert alert-success">
                 {{session()->get('alert')}}
@@ -137,6 +138,8 @@
                     <tr>
                     <th>Category ID</th>
                     <th>Category name</th>
+                    <th>No. of books</th>
+                    <th>Picture</th>
                     
                     <th>Action</th>
                     </tr>

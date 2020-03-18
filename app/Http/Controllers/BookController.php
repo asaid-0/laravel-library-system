@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
@@ -58,9 +58,14 @@ class BookController extends Controller
             'category_id'=>['required','numeric']
             
         ]);
+        // dd($request->all());
+        
         $book=new Book();
 
-    
+       $imageName=time().'.'.$request->avater->extension();
+       $request->avater->move(public_path('/bookimage',$imageName));
+       $request['avater']=asset('/bookimage').$imageName;
+       $book->pic_path=$imageName;
        $book->title=$request->title;
        $book->copies=$request->copies;
        $book->price=$request->price;

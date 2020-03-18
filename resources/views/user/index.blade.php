@@ -203,7 +203,6 @@
 																<i class="fa fa-shopping-basket"></i>
 																<em>Unaviable</em>
 															</button>
-															{{-- what if need to re-lease ? --}}
 														@elseif (!$book->isLeaseable())
 														<button class="tg-btn-disabled tg-btnstyletwo" href="javascript:void(0);">
 															<em>leased</em>

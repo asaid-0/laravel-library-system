@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth ;
 use App\Charts\ProfitPerWeek;
@@ -9,6 +8,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\UserLeasedBook;
 use DB;
+use Illuminate\Support\Facades\Hash;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -35,24 +36,44 @@ class AdminController extends Controller
     }
     public function adminsPage()
     {
-        return view('showAdmins') ;
+        $admins=User::all()->where('isAdmin',1);
+        return view('showAdmins',['admins' => $admins]) ;
     }
+
+    public function addAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => 'required|string|max:255|unique:users',
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'isAdmin'=>$request['isAdmin']
+        ]);       
+        return redirect()->route('showAdmins')->with("status", "Admin added successfully");
+    }
+
     public function user()
     {
         return view('users');
     }
-    public function book()
-    {
-        return view('books');
+    public function book(){
+        return view('books') ;
     }
-    public function category()
-    {
-        return view('categories');
+    public function category(){
+        return view('categories') ;
     }
     public function addingCategory()
     {
         return view('addCategory');
     }
+
     
     // public function user(){
     //     return view('users');
@@ -74,21 +95,24 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function active_deactive_users($id)
+    public function active_deactive_users ($id)
     {
-        $users = User::find($id);
-        if ($users->isActive == 1) {
-            $users->isActive = 0;
-        } else {
-            $users->isActive = 1;
+        $users =User::find($id);
+        if($users->isActive == 1)
+        {
+            $users->isActive = 0 ;
         }
-        if ($users->save()) {
-            echo json_encode("success");
-        } else {
+        else{
+            $users->isActive = 1 ;
+        }
+        if($users->save()){
+            echo json_encode("success") ;
+        }
+        else{
             echo json_encode("failed");
         }
     }
-
+ 
     public function create()
     {
         //
@@ -115,7 +139,7 @@ class AdminController extends Controller
            $users->email = $request->email ;
            $users->password = Hash::make($request->password) ;
            $users->save() ;
-          return redirect()->action('AdminController@index')->with('message', "user has been added successfully") ;
+          return redirect()->action('AdminController@adminsPage')->with('status', "user has been added successfully") ;
     }
 
     /**
@@ -137,7 +161,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        return view('edit', ['users' => \App\User::find($id)]);
+        return view('edit', ['users'=> \App\User::find($id)]);
     }
 
     /**
@@ -162,8 +186,12 @@ class AdminController extends Controller
         $users->email = $request->email ;
         $users->password = Hash::make($request->password) ;
         $users->update() ;
-        return redirect()->action('AdminController@index')->with('message', "user has been updated successfully");;
+        if ($users->isAdmin==1){
+            return redirect()->route('showAdmins')->with('status', "user has been updated successfully");;
+        }
+        return redirect()->action('AdminController@index')->with('status', "user has been updated successfully");;
     }
+    
 
     public function search(Request $request, $search = "") {
         if ($request->wantsJson()) {
@@ -179,8 +207,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /** delete admin */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('showAdmins')->with("status", "Admin deleted successfully");
     }
+
+
 }

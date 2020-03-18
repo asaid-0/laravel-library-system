@@ -136,23 +136,23 @@
             @endif
             {!! Form::open(['route' => ['users.update',$users->id],'method'=>'put']) !!}
             <div class="form-group">  
-              {{ Form::label('name')}}
-              {{ Form::text('name' , $users->name,array('class' => 'awesome')) }}
+              {!! Form::label('name','name',['class'=>'col-md-2 col-form-label text-md-right']) !!}
+              {!! Form::text('name' , $users->name) !!}
               </div>
             <div class="form-group">  
-            {{ Form::label('username')}}
-            {{ Form::text('userName' , $users->userName ,array('class' => 'userAwesome')) }}
+            {!! Form::label('username', 'username' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+            {!! Form::text('userName' , $users->userName ) !!}
             </div>
             <div class="form-group">
-              {{ Form::label('email') }}
-              {{ Form::text('email' , $users->email,array('class' => 'emailAwesome')) }}
+              {!! Form::label('email','email' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+              {!! Form::text('email' , $users->email) !!}
             </div>
             <div class="form-group">
               {{ Form::label('Password') }}
-              {{ Form::input('password', 'password', $users->password,array('class' => 'passwordAwesome')) }}
+              {{ Form::input('password', 'password',null,array('class' => 'passwordAwesome')) }}
             </div>
             <div class="form-group">
-              {{ Form::submit('update' ,["class"=>"btn btn-primary"])}}
+              {!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
             </div>
               {!! Form::close() !!}
         </div>
