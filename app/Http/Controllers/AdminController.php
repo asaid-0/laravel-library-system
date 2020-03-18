@@ -139,7 +139,7 @@ class AdminController extends Controller
            $users->email = $request->email ;
            $users->password = Hash::make($request->password) ;
            $users->save() ;
-          return redirect()->action('AdminController@adminsPage')->with('status', "user has been added successfully") ;
+          return redirect()->action('AdminController@index')->with('status', "user has been added successfully") ;
     }
 
     /**
@@ -193,13 +193,13 @@ class AdminController extends Controller
     }
     
 
-    public function search(Request $request, $search = "") {
-        if ($request->wantsJson()) {
-          return response()->json(User::search($search));
-        } else {
-          abort(403);
-        }
-      }
+    // public function search(Request $request, $search = "") {
+    //     if ($request->wantsJson()) {
+    //       return response()->json(User::search($search));
+    //     } else {
+    //       abort(403);
+    //     }
+    //   }
 
     /**
      * Remove the specified resource from storage.
