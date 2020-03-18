@@ -103,7 +103,8 @@
             <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
-        @endif
+		@endif
+		
 		<!--************************************
 				Header End
 		*************************************-->
@@ -122,9 +123,42 @@
 								<div id="tg-content" class="tg-content">
 									<div class="tg-products">
 										<div class="tg-productgrid">
+											<div>
+												@foreach ($errors->all() as $error)
+												<li class="alert alert-danger">{{$error}}</li>            
+												@endforeach
+											</div>
 											
-											jknnkn
+											{{ Form::open(array('url' => '/profile', 'method' => 'PUT', 'class'=>'col-md-12', 'autocomplete' => 'off')) }}
+											@php
+												$user = Auth::user();
+												
+											@endphp
+												<div class="form-group">  
+													{!! Form::label('name','Name',['class'=>'col-md-2 col-form-label text-md-right']) !!}
+													{!! Form::text('name' , $user->name) !!}
+													</div>
+												<div class="form-group">  
+												{!! Form::label('userName', 'Username' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+												{!! Form::text('userName' , $user->userName ) !!}
+												</div>
+												<div class="form-group">
+													{!! Form::label('email','E-mail' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+													{!! Form::text('email' , $user->email) !!}
+												</div>
+												<div class="form-group">
+													{!! Form::label('password','Password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+													{{ Form::input('password', 'password',null,array('class' => 'passwordAwesome')) }}
+												</div>
+												<div class="form-group">
+													{!! Form::label('cpassword','Confirm Password' ,['class'=>'col-md-2 col-form-label text-md-right']) !!}
+													{{ Form::input('cpassword', 'cpassword2',null,array('class' => 'passwordAwesome')) }}
+												</div>
+												<div class="form-group">
+													{!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
+												</div>
 
+											{{ Form::close() }}
 
 										</div>
 									</div>

@@ -21,7 +21,9 @@ Route::get('/book', function () {
 });
 
 
-Route::resource('/profile', 'User\UserController');
+Route::get('/profile', 'User\ProfileController@index');
+Route::put('/profile', 'User\ProfileController@update');
+
 Route::resource('userbooks', 'User\BookController');
 
 Route::get('/home', 'HomeController@index')->name('home');
