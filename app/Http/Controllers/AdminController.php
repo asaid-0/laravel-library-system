@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth ;
 use App\Charts\ProfitPerWeek;
@@ -9,8 +8,15 @@ use App\User;
 use Illuminate\Http\Request;
 use App\UserLeasedBook;
 use DB;
+use Illuminate\Support\Facades\Hash;
+
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+    
     public function adminHome()
     {   
         
@@ -30,9 +36,31 @@ class AdminController extends Controller
     }
     public function adminsPage()
     {
-        return view('showAdmins') ;
-    }   
-    public function user(){
+        $admins=User::all()->where('isAdmin',1);
+        return view('showAdmins',['admins' => $admins]) ;
+    }
+
+    public function addAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => 'required|string|max:255|unique:users',
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'isAdmin'=>$request['isAdmin']
+        ]);       
+        return redirect()->route('showAdmins')->with("status", "Admin added successfully");
+    }
+
+    public function user()
+    {
         return view('users');
     }
     public function book(){
@@ -45,6 +73,20 @@ class AdminController extends Controller
     {
         return view('addCategory');
     }
+    public function addingCategory()
+    {
+        return view('addCategory');
+    }
+    
+    // public function user(){
+    //     return view('users');
+    // }
+    // public function book(){
+    //     return view('books') ;
+    // }
+    // public function category(){
+    //     return view('categories') ;
+    // }
     public function index()
     {
         $users = User::paginate(3);
@@ -94,7 +136,7 @@ class AdminController extends Controller
             'password'=>'required|min:8|confirmed'
             ]);
            $users = new User ;
-           $users->id = Auth::id() ;
+        //    $users->id = Auth::id() ;
            $users->name = $request->name ;
            $users->userName = $request->userName ;
            $users->email = $request->email ;
@@ -149,6 +191,15 @@ class AdminController extends Controller
         $users->update() ;
         return redirect()->action('AdminController@index')->with('message', "user has been updated successfully");;
     }
+    
+
+    public function search(Request $request, $search = "") {
+        if ($request->wantsJson()) {
+          return response()->json(User::search($search));
+        } else {
+          abort(403);
+        }
+      }
 
     /**
      * Remove the specified resource from storage.
@@ -156,8 +207,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /** delete admin */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('showAdmins')->with("status", "Admin deleted successfully");
     }
+
+
 }
