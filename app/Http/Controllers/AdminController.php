@@ -109,7 +109,7 @@ class AdminController extends Controller
             'password'=>'required|min:8|confirmed'
             ]);
            $users = new User ;
-           $users->id = Auth::id() ;
+        //    $users->id = Auth::id() ;
            $users->name = $request->name ;
            $users->userName = $request->userName ;
            $users->email = $request->email ;
