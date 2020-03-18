@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Auth ;
 use App\Charts\ProfitPerWeek;
 use App\User;
 use Illuminate\Http\Request;
@@ -9,6 +11,11 @@ use App\UserLeasedBook;
 use DB;
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+    
     public function adminHome()
     {   
         
@@ -41,6 +48,10 @@ class AdminController extends Controller
     public function category()
     {
         return view('categories');
+    }
+    public function addingCategory()
+    {
+        return view('addCategory');
     }
     
     // public function user(){
@@ -91,7 +102,20 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name'  => 'required|unique:users|string|min:3',
+            'userName'=>'required|unique:users|string|min:3',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:8|confirmed'
+            ]);
+           $users = new User ;
+           $users->id = Auth::id() ;
+           $users->name = $request->name ;
+           $users->userName = $request->userName ;
+           $users->email = $request->email ;
+           $users->password = Hash::make($request->password) ;
+           $users->save() ;
+          return redirect()->action('AdminController@index')->with('message', "user has been added successfully") ;
     }
 
     /**
@@ -123,18 +147,31 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$user)
+    public function update(Request $request,$id)
     {
-        $input=$request->except('_method','_token');
         $validateData = $request->validate([
             'name'=>'required|min:3', 
             'userName'=> 'required|min:3|unique:users,id',
             'email'=>'required|email|unique:users,id',
             'password'=>'required|min:8'
         ]);
-        User::where('id',$user)->update($input);
-        return redirect()->action('AdminController@index')->with('message', "Phone has been updated successfully");;
+        $users = new User ;
+        $users =User::find($id);
+        $users->name = $request->name ;
+        $users->userName = $request->userName ;
+        $users->email = $request->email ;
+        $users->password = Hash::make($request->password) ;
+        $users->update() ;
+        return redirect()->action('AdminController@index')->with('message', "user has been updated successfully");;
     }
+
+    public function search(Request $request, $search = "") {
+        if ($request->wantsJson()) {
+          return response()->json(User::search($search));
+        } else {
+          abort(403);
+        }
+      }
 
     /**
      * Remove the specified resource from storage.

@@ -47,7 +47,8 @@
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
         <div class="header-top-menu tabl-d-n hd-search-rp">
             <div class="breadcome-heading">
-                <form role="search" class="">
+              <form role="search" method="POST" action="{{ URL::to('/search') }}">
+                @csrf
                     <div class="find">
                         <ul class="list">
                             <li><input type="text" placeholder="Search..." class="form-control"></li>
