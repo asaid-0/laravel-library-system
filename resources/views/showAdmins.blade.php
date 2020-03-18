@@ -128,10 +128,10 @@
         </div>
     @endif
         <div class="create-table">
-          <h1>All Admins</h1>
-          <a href="" type="button" class="btn btn-primary" id="user" data-toggle="modal" data-target="#addAdminModal">Add Admin</a>
+          {{-- <h1>All Admins</h1> --}}
+          {{-- <a href="" type="button" class="btn btn-primary" id="user" data-toggle="modal" data-target="#addAdminModal">Add Admin</a> --}}
           {{-- modal start --}}
-          <div class="modal fade" id="addAdminModal" tabindex="-1" role="dialog" aria-labelledby="addNewAdmin"
+          {{-- <div class="modal fade" id="addAdminModal" tabindex="-1" role="dialog" aria-labelledby="addNewAdmin"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -220,7 +220,7 @@
       
     </div>
   </div>
-</div>
+</div> --}}
 
 
           {{-- modal end --}}
@@ -273,24 +273,47 @@
           </div>
           <div class="modal-body">
            
-              {!! Form::open() !!}
+            <form method="POST" action="{{ route('addAdmin') }}">
+              @csrf
+              <input id="isAdmin" name="isAdmin" type="hidden" value="1">
               <div class="input-group">
                     <div class="input-group-prepend">
                     <div class="form-group">
                         <label for="name" class="col-md-6 col-form-label text-md-right">{{ __('Name') }}</label>
-                        <input type="text" name="Name" value="{{ old('name') }}">
+                        <input type="text" name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                       <label for="username" class="col-md-6 col-form-label text-md-right">{{ __('Admin name') }}</label>
-                      <input type="text" name="userName" value="{{ old('userName') }}"> 
+                      <input type="text" name="username" value="{{ old('username') }}"> 
+                        @if ($errors->has('username'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                        @endif
                   </div>
                   <div class="form-group">
                       <label for="email" class="col-md-6 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                       <input type="text" name="email" value="{{ old('email') }}">                        
                   </div>
+
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
                   <div class="form-group">
                       <label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
-                      <input type="password" name="password">                        
+                      <input type="password" name="password">   
+                      @error('password')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror                     
                   </div>
                   <div class="form-group">
                       <label for="password-confirm" class="col-md-6 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -303,8 +326,7 @@
             <button type="submit" class="btn btn-success">Add</button>
            
           </div>
-           {!! Form::close() !!}
-        
+            </form>
         </div>
       </div>
     </div>  
@@ -340,7 +362,7 @@
 
   <script type="text/javascript">
     @if($errors->count() > 0){
-      $('#addAdminModal').modal('show');
+      $('#admin').modal('show');
     }
     @endif
   </script>
