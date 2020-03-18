@@ -25,13 +25,14 @@ Route::get('/profile', 'User\ProfileController@index');
 Route::put('/profile', 'User\ProfileController@update');
 
 Route::resource('userbooks', 'User\BookController');
+Route::resource('favorite', 'User\FavoriteController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/users', 'AdminController@user')->name('users');
 Route::get('/admin_books', 'AdminController@book')->name('books');
 
 Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
-Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
+Route::get('/category/{cat}', array('uses' => 'User\BookController@list'))->name('category.index');
 Route::post('/addAdmin', array('uses' => 'AdminController@addAdmin'))->name('addAdmin');
 
 // Route::get('/admins', 'AdminController@admin')->name('admins');

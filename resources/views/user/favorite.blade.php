@@ -62,10 +62,10 @@
 									</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="tg-themebadge">{{ \Illuminate\Support\Facades\Auth::user()->favoriteBooks()->count() }}</span>
+                                    <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown selected-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="tg-themebadge">{{ $books->count() }}</span>
 										<i class="icon-heart"></i>
-										<span>Favorites</span>
+										<em>Favorites</em>
 									</a>
 
 
@@ -169,7 +169,6 @@
 															<div class="tg-backcover"><img src="/images/books/img-04.jpg" alt="image description"></div>
 														</div>
 														<a class="tg-btnaddtowishlist" href="javascript:void(0);">
-															
 															@if ($book->isFavorite())
 															{!! Form::open(['route' => ['favorite.destroy','favorite' => $book->id],'method' => 'delete']) !!}
 																<i class="icon-heart"></i>
@@ -261,34 +260,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
-								<aside id="tg-sidebar" class="tg-sidebar">
-									<div class="tg-widget tg-widgetsearch">
-
-										<form action={{ URL::to('/search') }} method="get" class="tg-formtheme tg-formsearch">
-											<div class="form-group">
-												<button type="submit"><i class="icon-magnifier"></i></button>
-												<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
-											</div>
-										</form>
-
-									</div>
-									<div class="tg-widget tg-catagories">
-										<div class="tg-widgettitle">
-											<h3><i class="fa fa-folder-open"></i> Categories</h3>
-										</div>
-										<div class="tg-widgetcontent">
-											<ul>
-												@forelse ($categories as $cat)
-													<li><a href="{{ action('User\BookController@list', $cat) }}"><span>{{$cat->category_name}}</span><em class="book-count">{{$cat->books_count}}</em></a></li>
-												@empty
-													<p>No categories</p>
-												@endforelse
-											</ul>
-										</div>
-									</div>
-								</aside>
-							</div>
+							
 						</div>
 					</div>
 				</div>
