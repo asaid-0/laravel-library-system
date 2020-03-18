@@ -122,28 +122,133 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
+        @if (session('status'))
+        <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
         <div class="create-table">
           <h1>All Admins</h1>
-          <a href="" type="button" class="btn btn-primary" id="user" data-toggle="modal" data-target="#exampleModal">Add Admin</a>
+          <a href="" type="button" class="btn btn-primary" id="user" data-toggle="modal" data-target="#addAdminModal">Add Admin</a>
+          {{-- modal start --}}
+          <div class="modal fade" id="addAdminModal" tabindex="-1" role="dialog" aria-labelledby="addNewAdmin"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add New Admin</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form method="POST" action="{{ route('addAdmin') }}">
+          @csrf
+          <input id="isAdmin" name="isAdmin" type="hidden" value="1">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+               </div>
+               
+               <input id="name" placeholder="Full Name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+      
+               @error('name')
+                   <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+               @enderror
+      
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+               </div>
+               
+               <input id="username" placeholder="Username" type="text"
+                                             class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                             name="username" value="{{ old('username') }}" required>
+                               
+              @if ($errors->has('username'))
+                  <span class="invalid-feedback">
+                      <strong>{{ $errors->first('username') }}</strong>
+                  </span>
+              @endif
+      
+      
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+               </div>
+               
+      
+               <input id="email" type="email" placeholder="E-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+      
+              @error('email')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+      
+          </div> <!-- form-group// -->
+         
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+              </div>
+              
+              <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+      
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+      
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+              <input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+          </div>  
+          <div class="modal-footer d-flex justify-content-center">
+            <button type=submit class="btn btn-unique">Add</button>
+          </div>                                
+      </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+          {{-- modal end --}}
           <table class="content-table">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Admin name</th>
+                  <th>Name</th>
+                  <th>Username</th>
                   <th>Email</th>
                   <th>Action</th>
                   </tr>
               </thead>
               <tbody>
+                @foreach ($admins as $admin)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <td>{{ $admin->id }}</td>
+                  <td>{{ $admin->name }}</td>
+                  <td>{{ $admin->userName }}</td>
+                  <td>{{ $admin->email }}</td>
                   <td> 
                     <a href=""><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
-                    <a href=""><button type="button" class="btn btn-danger"id="delete">Delete</button></a>
+                    {!! Form::open(['route' => ['users.destroy', $admin->id], 'method' => 'delete']) !!}
+                    <button type="submit" class="btn btn-danger"id="delete">Delete</button>
+                    {!! Form::close() !!}
                   </td>
                 </tr>
+                @endforeach
               </tbody>
           </table>
         </div>
@@ -179,5 +284,12 @@
   <script src="/Dashio/lib/common-scripts.js"></script>
   <script type="text/javascript" src="/Dashio/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="/Dashio/lib/gritter-conf.js"></script>
+
+  <script type="text/javascript">
+    @if($errors->count() > 0){
+      $('#addAdminModal').modal('show');
+    }
+    @endif
+  </script>
 </body>
 </html>

@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\UserLeasedBook;
 use DB;
+use Illuminate\Support\Facades\Hash;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -33,8 +35,29 @@ class AdminController extends Controller
     }
     public function adminsPage()
     {
-        return view('showAdmins') ;
+        $admins=User::all()->where('isAdmin',1);
+        return view('showAdmins',['admins' => $admins]) ;
     }
+
+    public function addAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => 'required|string|max:255|unique:users',
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'isAdmin'=>$request['isAdmin']
+        ]);       
+        return redirect()->route('showAdmins')->with("status", "Admin added successfully");
+    }
+
     public function user()
     {
         return view('users');
@@ -140,6 +163,7 @@ class AdminController extends Controller
         User::where('id',$user)->update($input);
         return redirect()->action('AdminController@index')->with('message', "Phone has been updated successfully");;
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -147,8 +171,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /** delete admin */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('showAdmins')->with("status", "Admin deleted successfully");
     }
+
+
 }

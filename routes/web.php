@@ -24,6 +24,7 @@ Route::get('/test', function () {
 Route::resource('userbooks', 'User\BookController');
 Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
 Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
+Route::post('/addAdmin', array('uses' => 'AdminController@addAdmin'))->name('addAdmin');
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admins', 'AdminController@admin')->name('admins');
