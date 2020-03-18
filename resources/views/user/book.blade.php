@@ -8,7 +8,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>BootStrap HTML5 CSS3 Theme</title>
 	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/normalize.css">
@@ -71,8 +72,25 @@
                                 </li>
 							</ul>
 							<div class="tg-userlogin">
-								<figure><a href="javascript:void(0);"><img style="height: 30px" src="/images/users/img-01.jpg" alt="user"></a></figure>
-								<span>Hi, User</span>
+								<a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									<figure><img style="height: 30px" src="/images/users/img-01.jpg" alt="user"></figure>
+									<span>Hi, {{ Auth::user()->name }} </span>								
+								</a>
+
+								<div style="font-size: 14px" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="/profile">
+                                        My Profile
+                                    </a>
+									<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
 							</div>
 						</div>
 					</div>

@@ -134,7 +134,7 @@
         </div>
     @endif
 
-          <a href="" type="button" class="btn btn-info" style="margin-left:120%" id="book" data-toggle="modal" data-target="#exampleModalCenter">Add Book</a></div>
+          <a href="" type="button" class="btn btn-info" id="book" data-toggle="modal" data-target="#exampleModalCenter">Add Book</a></div>
          
             <table class="books-table">
                 <thead>
@@ -143,7 +143,7 @@
                     <th>Title</th>
                     <th>Category name</th>
                     <th>Author</th>
-                    <th>current No.</th>
+                    <th>Copies</th>
                     <th>price</th>
                     <th>Picture</th>
                   
@@ -158,11 +158,10 @@
                         <td>{{$book->title}}</td>
                         {{-- <td>{{$book->category->category_name}}</td> --}}
                       <td>{{$book->category->category_name}}</td>
-                        <td>all</td>
-                        <td>{{$book->auther}}</td>
+                      <td>{{ $book->author }}</td>
                         <td>{{$book->copies}}</td>
                         <td>{{$book->price}}</td>
-                      <td><img src="{{asset('/bookimage').'/'.$book->pic_path}}" alt="not found"></td>
+                      <td><img style="width: 95px; height: auto" src="{{asset('/bookimage').'/'.$book['pic-path']}}" alt="not found"></td>
                         
                         <td>
                       
@@ -177,12 +176,15 @@
    
             
             
-                            <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
+                            <div class="row" style="width: 20rem">
+
+                              <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}"><span class="fa fa-edit"></span> Edit</a>
            
                             @csrf
                             @method('DELETE')
               
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger"><span class="fa fa-remove"></span> Delete</button>
+                            </div>
                         </form>
                         </td>
                       </tr>  
@@ -195,11 +197,6 @@
           </div>
       </section>
     </section>
-
-
-
-
-
     <!-- Button trigger modal -->
 
 
@@ -222,30 +219,43 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
           <div class="input-group">
                 <div class="input-group-prepend">
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail2">Book title</label>
-            <input type="text" class="form-control" id="exampleDropdownFormEmail2" name ='title' placeholder="title">
+          <div class="form-group row">
+              <label class="col-sm-2 col-form-label" for="exampleDropdownFormEmail2">Title</label>
+              <div class="col-sm-10">
+                <input class="form-control" style="margin-top: 0" type="text" id="exampleDropdownFormEmail2" name ='title' placeholder="title">
+              </div>
           </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">category_id</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2"  name='category_id' placeholder="Category_id">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Category</label>
+            <div class="col-sm-10">
+              {!! Form::select('category_id', \App\Category::pluck('category_name', 'id') , null,['placeholder' => 'Select categories...', 'class' => 'form-control', 'style' => 'margin-top: 0', 'required' => 'required'])!!}
+              {{-- <input type="text" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2"  name='category_id' placeholder="Category_id"> --}}
+            </div>
           </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">author</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='author' placeholder="AuthorName">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Author</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2" name='author' placeholder="AuthorName">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">price</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='price' placeholder="price">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Price</label>
+            <div class="col-sm-10"> 
+              <input type="text" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2" name='price' placeholder="price">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">Available copies</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" name='copies'placeholder="Number for copies">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Copies</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2" name='copies'placeholder="Number of copies">
+            </div>
           </div>
          
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">Uploade Book</label>
-            <input type="file" class="form-control" id="exampleDropdownFormPassword2"name='avater' placeholder="book">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Picture</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2"name='avater' placeholder="book">
+            </div>
           </div>
              {{-- <label for="exampleFormControlFile1">Example file input</label>
               <input type="file" class="form-control-file" id="exampleFormControlFile1"> 
