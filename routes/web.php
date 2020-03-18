@@ -47,7 +47,7 @@ Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
 Route::get('addCategory','AdminController@addingCategory');
 // Route::get('users', 'AdminController@index');
 Route::get('/active_deactive_users/{id}', 'AdminController@active_deactive_users');
-Route::get('/search','User\BookController@search');
+Route::get('/search','User\BookController@search')->name('book.search');
 
 Route::resource('books', 'BookController');
 Route::resource('categories', 'CategoryController');
