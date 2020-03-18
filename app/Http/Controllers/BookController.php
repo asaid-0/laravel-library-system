@@ -69,7 +69,7 @@ class BookController extends Controller
        $book->title=$request->title;
        $book->copies=$request->copies;
        $book->price=$request->price;
-       $book->auther=$request->author ;
+       $book->author=$request->author ;
        $book->category_id=$request->category_id;
        $book->save();
        
