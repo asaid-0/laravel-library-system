@@ -15,7 +15,7 @@ class AddPicToBooksTable extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             //
-            $table->string('pic-path');
+            $table->string('pic-path')->default('book.jpg');
         });
     }
 

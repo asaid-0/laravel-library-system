@@ -21,6 +21,8 @@ Route::get('/test', function () {
     return view('welcome');
 });
 
+
+Route::resource('/profile', 'User\UserController');
 Route::resource('userbooks', 'User\BookController');
 Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
 Route::get('/category/{cat}', array('uses' => 'User\BookController@list'));
@@ -41,6 +43,7 @@ Route::get('/showAdmins','AdminController@adminsPage')->name('showAdmins') ;
 
 Route::resource('books', 'BookController');
 Route::resource('categories', 'CategoryController');
+
 
 
 

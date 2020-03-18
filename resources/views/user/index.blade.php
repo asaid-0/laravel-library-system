@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/color.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -71,8 +72,25 @@
                                 </li>
 							</ul>
 							<div class="tg-userlogin">
-								<figure><a href="javascript:void(0);"><img style="height: 30px" src="/images/users/img-01.jpg" alt="user"></a></figure>
-								<span>Hi, User</span>
+								<a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									<figure><img style="height: 30px" src="/images/users/img-01.jpg" alt="user"></figure>
+									<span>Hi, {{ Auth::user()->name }} </span>								
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="/profile">
+                                        My Profile
+                                    </a>
+									<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
 							</div>
 						</div>
 					</div>
