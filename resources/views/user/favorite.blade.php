@@ -163,19 +163,21 @@
 															<div class="tg-frontcover"><img src="/images/books/img-04.jpg" alt="image description"></div>
 															<div class="tg-backcover"><img src="/images/books/img-04.jpg" alt="image description"></div>
 														</div>
-														<a class="tg-btnaddtowishlist" href="javascript:void(0);">
-															@if ($book->isFavorite())
+														@if ($book->isFavorite())
 															{!! Form::open(['route' => ['favorite.destroy','favorite' => $book->id],'method' => 'delete']) !!}
+																<a class="tg-btnaddtowishlist" href="#" onclick="$(this).closest('form').submit();">
 																<i class="icon-heart"></i>
 																<button style="display: inline; background: none;" type="submit">unlike</button>
+																</a>
 															{!! Form::close() !!}
 															@else
 															{!! Form::open(['route' => ['favorite.store','id' => $book->id],'method' => 'post']) !!}
+																<a class="tg-btnaddtowishlist" href="#" onclick="$(this).closest('form').submit();" >	
 																<i class="icon-heart"></i>
 																<button style="display: inline; background: none;" type="submit">like</button>
+																</a>
 															{!! Form::close() !!}
-															@endif
-														</a>
+														@endif
 													</figure>
 													<div class="tg-postbookcontent">
 														<ul class="tg-bookscategories">
