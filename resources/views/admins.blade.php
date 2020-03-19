@@ -54,8 +54,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
             <a href="/admins">
               <i class="fa fa-dashboard"></i>
@@ -70,7 +70,7 @@
           </li>
           <li class="sub-menu">
             <a href="/users">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user"></i>
               <span>All Users</span>
               </a>
           </li>
@@ -166,21 +166,6 @@
   
     <!--custom chart end-->
     <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
-      <div class="text-center">
-        <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-        </div>
-        <a href="index.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
-    <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="Dashio/lib/jquery/jquery.min.js"></script>
