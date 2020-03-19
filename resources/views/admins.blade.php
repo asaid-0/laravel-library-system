@@ -44,21 +44,6 @@
           <li><a class="logout" href="">Logout</a></li>
         </ul>
       </div>
-      <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-        <div class="header-top-menu tabl-d-n hd-search-rp">
-            <div class="breadcome-heading">
-              <form role="search" method="POST" action="{{ URL::to('/search') }}">
-                @csrf
-                    <div class="find">
-                        <ul class="list">
-                            <li><input type="text" placeholder="Search..." class="form-control"></li>
-                            <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************
@@ -122,7 +107,7 @@
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
+    <section style="margin-left: 25%" id="main-content">
       <section class="wrapper">
           <div class="col-lg-9 main-chart">
             <div class="row mt">
@@ -134,7 +119,7 @@
                   </div>
                   <div class="chart mt">
                 </div>
-                <h1>Total No. of books</h1>
+              <h1 class="counter-count">{{ \App\Book::count() }}</h1>
                   </div>
                 <!-- /grey-panel -->
               </div>
@@ -146,7 +131,7 @@
                   </div>
                   <div class="chart mt">
                 </div>
-                    <h1> Numbers of members</h1>
+                    <h1 class="counter-count"> {{ \App\Users::count() }} </h1>
                 </div>
                 <!--  /darkblue panel -->
               </div>
@@ -159,7 +144,7 @@
                   </div>
                   <div class="chart mt">
                   </div>
-                  <h1>Numbers of admins</h1>
+                  <h1 class="counter-count">{{ \App\Users::where('isAdmin', 1)->count() }}</h1>
                 </div>
               </div>
           </div>
@@ -174,7 +159,7 @@
     </section>
      <!--CUSTOM CHART START -->
 
-     <div>
+     <div style="margin: 0 10% 0 20%">
       {!! $chart->container() !!}
       {!! $chart->script() !!}
     </div>
@@ -209,5 +194,18 @@
   <script src="Dashio/lib/common-scripts.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
+  <script type="text/javascript">
+    $('.counter-count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 5000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+  </script>
 </body>
 </html>

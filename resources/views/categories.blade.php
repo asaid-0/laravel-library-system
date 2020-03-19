@@ -138,9 +138,7 @@
                     <tr>
                     <th>Category ID</th>
                     <th>Category name</th>
-                    <th>No. of books</th>
-                    <th>Picture</th>
-                    
+                    <th>No. of books</th>                    
                     <th>Action</th>
                     </tr>
                 </thead>
@@ -149,9 +147,10 @@
                   <tr>
                     <td>{{$category->id}}</td>
                     
-                    <td>{{$category->category_name}}</td>
+                    <td>{{ $category->category_name }}</td>
+                  <td>{{ $category->books->count() }}</td>
                   
-                    <td >
+                    <td>
               
                       <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
 
@@ -181,7 +180,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add Book</h3></h4>
+        <h4 class="modal-title" id="exampleModalLongTitle"><h3>Add Category</h3></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -210,7 +209,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Save Book</button>
+        <button type="submit" class="btn btn-success">Save</button>
        
       </div>
        {!! Form::close() !!}

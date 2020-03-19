@@ -12,6 +12,15 @@ class User extends Authenticatable
     use SoftDeletes;
     use Notifiable;
 
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($user) { // before delete() method call this
+            $user->userComments()->detach();
+            $user->leasedBooks()->detach();
+            $user->favoriteBooks()->detach();
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,4 +62,5 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Book', 'user-comment-book', 'user_id', 'book_id')->withPivot('comment','rank','created_at');
 
     }
+ 
 }

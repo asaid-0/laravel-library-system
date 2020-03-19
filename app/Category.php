@@ -15,4 +15,11 @@ class Category extends Model
     }
 
     //
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($category) { // before delete() method call this
+            $category->books()->delete();
+        });
+    }
 }

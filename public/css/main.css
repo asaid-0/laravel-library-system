@@ -4173,11 +4173,12 @@ body.tg-comingsoonpage .tg-footerbar{position:static;}
 ul{
 	margin-bottom: 0 !important;
 }
-.selected-menu{
-	border-bottom: 3px solid #0077B5;
+.tg-addnav > li > a {
 	padding-bottom: 42px;
+	margin-right: 1rem;
+	width: 100%;
 }
-.tg-addnav > li a:hover {
-	border-bottom: 3px solid #0077B5;
-	padding-bottom: 42px;
+.menu-item-active, .menu-item:hover {
+	border-bottom: 3px solid #f16945;
+	color: #f16945 !important;
 }

@@ -11,7 +11,6 @@ class Book extends Model
     protected $fillable = [
         'category_id', 'auther','title','price','copies'
     ];
-
     public function category()
     {
         return $this->belongsTo('App\Category');
@@ -55,4 +54,12 @@ class Book extends Model
     public function rating(){
         return round($this->BookComments()->avg('rank'));
     }
+
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($book) { // before delete() method call this
+            $book->BookComments()->detach();
+        });
+    }
+
 }
