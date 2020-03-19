@@ -51,20 +51,7 @@
          </form></li>
         </ul>
       </div>
-      <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-        <div class="header-top-menu tabl-d-n hd-search-rp">
-            <div class="breadcome-heading">
-                <form role="search" class="">
-                    <div class="find">
-                        <ul class="list">
-                            <li><input type="text" placeholder="Search..." class="form-control"></li>
-                            <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+      
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************

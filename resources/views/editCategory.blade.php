@@ -43,20 +43,7 @@
           <li><a class="logout" href="">Logout</a></li>
         </ul>
       </div>
-      <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-        <div class="header-top-menu tabl-d-n hd-search-rp">
-            <div class="breadcome-heading">
-                <form role="search" class="">
-                    <div class="find">
-                        <ul class="list">
-                            <li><input type="text" placeholder="Search..." class="form-control"></li>
-                            <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+      
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************
@@ -67,17 +54,23 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
-            <a class="active" href="/admins">
+            <a href="/admins">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
               </a>
           </li>
           <li class="sub-menu">
-            <a class="active" href="/users">
-              <i class="fas fa-users"></i>
+            <a href="/showAdmins">
+              <i class="fa fa-user-secret"></i>
+              <span>All admins</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="/users">
+              <i class="fa fa-user"></i>
               <span>All Users</span>
               </a>
           </li>
@@ -88,22 +81,10 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a href="/categories">
+            <a class="active" href="/categories">
               <i class="fa fa-book"></i>
               <span>Category</span>
               </a>
-          </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->

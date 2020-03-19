@@ -43,20 +43,7 @@
           <li><a class="logout" href="/login">Logout</a></li>
         </ul>
       </div>
-      <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-        <div class="header-top-menu tabl-d-n hd-search-rp">
-            <div class="breadcome-heading">
-                <form role="search" class="">
-                    <div class="find">
-                        <ul class="list">
-                            <li><input type="text" placeholder="Search..." class="form-control"></li>
-                            <li class="search"><a href=""><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                  </form>
-            </div>
-        </div>
-    </div>
+      
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************
@@ -67,8 +54,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
             <a href="/admins">
               <i class="fa fa-dashboard"></i>
@@ -77,13 +64,13 @@
           </li>
           <li class="sub-menu">
             <a href="/showAdmins">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user-secret"></i>
               <span>All admins</span>
               </a>
           </li>
           <li class="sub-menu">
             <a href="/users">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user"></i>
               <span>All Users</span>
               </a>
           </li>
@@ -98,18 +85,6 @@
               <i class="fa fa-book"></i>
               <span>Category</span>
               </a>
-          </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -148,8 +123,10 @@
               {!! Form::text('email' , $users->email) !!}
             </div>
             <div class="form-group">
-              {{ Form::label('Password') }}
-              {{ Form::input('password', 'password',$users->password,array('class' => 'passwordAwesome')) }}
+              {{ Form::label('Password', 'password', ['class'=>'col-md-2 col-form-label text-md-right']) }}
+              {{ Form::input('password', 'password','oldpwd') }}
+              <span class="text-primary">Leave for old password</span>
+
             </div>
             <div class="form-group">
               {!! Form::submit('update' ,['class'=>'btn btn-primary']) !!}
@@ -161,19 +138,6 @@
     </section>
     <!--main content end-->
     <!--footer start-->
-    <footer class="update-footer">
-      <div class="text-center">
-        <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-        </div>
-        <a href="index.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->

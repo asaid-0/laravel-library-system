@@ -173,18 +173,18 @@ class AdminController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $validateData = $request->validate([
+        $users = new User ;
+        $users =User::find($id);
+        $request->validate([
             'name'=>'required|min:3', 
             'userName'=> "required|min:3|unique:users,userName,{$id},id,deleted_at,NULL",
             'email'=>"required|email|unique:users,email,{$id},id,deleted_at,NULL",
-            'password'=>'required|min:8'
+            'password'=> $request->password != 'oldpwd' ? 'required|min:8' : ''
         ]);
-        $users = new User ;
-        $users =User::find($id);
+        $users->password = $request->password != 'oldpwd' ? Hash::make($request->password) : $users->password;
         $users->name = $request->name ;
         $users->userName = $request->userName ;
         $users->email = $request->email ;
-        $users->password = Hash::make($request->password) ;
         $users->update() ;
         if ($users->isAdmin==1){
             return redirect()->route('showAdmins')->with('status', "user has been updated successfully");;
