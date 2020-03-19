@@ -73,8 +73,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-        <h5 class="centered">Admin</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+        <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
             <a class="active" href="/admins">
               <i class="fa fa-dashboard"></i>
@@ -89,7 +89,7 @@
           </li>
           <li class="sub-menu">
             <a class="active" href="/users">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user-secret"></i>
               <span>All Users</span>
               </a>
           </li>
