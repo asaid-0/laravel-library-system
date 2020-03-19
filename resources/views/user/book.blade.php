@@ -58,7 +58,7 @@
                                 </li>
                                 <li>
                                     <a class="menu-item tg-btnthemedropdown selected-menu" href="/favorite" id="tg-wishlisst" aria-haspopup="true" aria-expanded="false">
-									<span class="tg-themebadge">{{ \Illuminate\Support\Facades\Auth::user()->favoriteBooks()->count() }}</span>
+									<span class="tg-themebadge">{{ Auth::user()->favoriteBooks()->count() }}</span>
 									<i class="icon-heart"></i>
 									<em>Favorites</em>
 								</a>
@@ -113,9 +113,13 @@
                                 <ul class="tg-bookscategories">
                                     <li><a href="javascript:void(0);"><i class="fa fa-folder"></i> {!! $book->getCategory() !!}</a></li>
                                     @if ($book->isFavorite())
-                                        <i class="fa fa-heart love-btn love-btn-active"></i>
+                                    {!! Form::open(['route' => ['favorite.destroy','favorite' => $book->id],'method' => 'delete']) !!}
+                                        <button type="submit" class="fa fa-heart love-btn love-btn-active"></button>
+                                    {!! Form::close() !!}
                                     @else
-                                        <i class="fa fa-heart love-btn"></i>
+                                    {!! Form::open(['route' => ['favorite.store','id' => $book->id],'method' => 'post']) !!}
+                                        <button type="submit" class="fa fa-heart love-btn"></button>
+                                    {!! Form::close() !!}
                                     @endif
                                 </ul>
                             </div>
@@ -280,6 +284,11 @@
                 
                 @forelse ($book->BookComments()->get() as $comment)
                     <div class="post-outer-container">
+                        @if ($comment->id == Auth::id())
+                            {!! Form::open(['route' => ['userbooks.delete','book'=>$book],'method' => 'post']) !!}
+                                        <button style="margin: 1rem; float: right; font-size: 16px" type="submit" class="text-danger"><i class="fa fa-remove text-danger"></i></button>
+                            {!! Form::close() !!}
+                        @endif
                         <div class="post-container">
                             <div class="post-details">
                                 <img src="/images/users/img-01.jpg" style="border: 1.5px dashed #f16945; border-radius: 50%" alt="user" class="user-image"/>

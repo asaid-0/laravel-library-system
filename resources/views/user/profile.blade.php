@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BootStrap HTML5 CSS3 Theme</title>
+	<title>Laravel Library</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -45,31 +45,26 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<ul class="tg-addnav">
                                 <li>
-									<a href="javascript:void(0);">
+									<a>
 										<i style="font-size: 4rem; color: #3e3e3e" class="icon-book"></i>
 									</a>
 								</li>
+							
 								<li>
-									<a href="javascript:void(0);">
-										<i class="icon-home"></i>
-										<em>Home</em>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:void(0);">
+									<a class="menu-item" href="/userbooks">
 										<i class="icon-books"></i>
-										<em>My Books</em>
+										<em>Books</em>
 									</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="tg-themebadge">3</span>
-										<i class="icon-heart"></i>
-										<span>Favorites</span>
-									</a>
+                                    <a class="menu-item tg-btnthemedropdown" href="/favorite" id="tg-wishlisst" aria-haspopup="true" aria-expanded="false">
+									<span class="tg-themebadge">{{ Auth::user()->favoriteBooks()->count() }}</span>
+									<i class="icon-heart"></i>
+									<em>Favorites</em>
+								</a>
 
 
-                                </li>
+							</li>
 							</ul>
 							<div class="tg-userlogin">
 								<a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

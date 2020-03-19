@@ -44,15 +44,13 @@ class CategoryController extends Controller
 
         $request->validate([
             
-            'id'=>['required','numeric','unique:categories'],
             'category_name'=>['required','unique:categories,category_name,NULL,id,deleted_at,NULL']
             
             
         ]);
         //
         $category=new Category();
-       
-        $category->id=$request->id;
+
         $category->category_name=$request->category_name;
         
         
@@ -102,13 +100,10 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
         $category->category_name= $request->get('category_name');
-        $category->id = $request->get('id');
         
         $category->save();
 
         return redirect('categories')->with('success', 'category updated!');
-        
-       
     }
 
     /**

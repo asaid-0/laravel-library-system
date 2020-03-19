@@ -11,19 +11,19 @@
   <title>Book page</title>
 
   <!-- Favicons -->
-  <link href="Dashio/img/favicon.png" rel="icon">
-  <link href="Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/Dashio/img/favicon.png" rel="icon">
+  <link href="/Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="/Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="Dashio/css/zabuto_calendar.css">
   <link rel="stylesheet" type="text/css" href="Dashio/lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
-  <link href="Dashio/css/style.css" rel="stylesheet">
-  <link href="Dashio/css/style-responsive.css" rel="stylesheet">
-  <script src="Dashio/lib/chart-master/Chart.js"></script>
+  <link href="/Dashio/css/style.css" rel="stylesheet">
+  <link href="/Dashio/css/style-responsive.css" rel="stylesheet">
+  <script src="/Dashio/lib/chart-master/Chart.js"></script>
 
 </head>
 <body>
@@ -109,7 +109,7 @@
         <!-- sidebar menu end-->
       </div>
     </aside>
-    <section id="main-content">
+    <section style="margin-left: 25%" id="main-content">
       <section class="wrapper">
     <div id="editcategoryModal">
       
@@ -185,15 +185,15 @@
   <!--footer end-->
 </section>
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="Dashio/lib/jquery/jquery.min.js"></script>
+<script src="/Dashio/lib/jquery/jquery.min.js"></script>
 
-<script src="Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/Dashio/lib/bootstrap/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="Dashio/lib/jquery.dcjqaccordion.2.7.js"></script>
-<script src="Dashio/lib/jquery.scrollTo.min.js"></script>
-<script src="Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="Dashio/lib/jquery.sparkline.js"></script>
+<script src="/Dashio/lib/jquery.scrollTo.min.js"></script>
+<script src="/Dashio/lib/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="/Dashio/lib/jquery.sparkline.js"></script>
 <!--common script for all pages-->
-<script src="Dashio/lib/common-scripts.js"></script>
+<script src="/Dashio/lib/common-scripts.js"></script>
 <script type="text/javascript" src="Dashio/lib/gritter/js/jquery.gritter.js"></script>
 <script type="text/javascript" src="Dashio/lib/gritter-conf.js"></script>
 </html>

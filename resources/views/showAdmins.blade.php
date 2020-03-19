@@ -40,7 +40,15 @@
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="/login">Logout</a></li>
+          <li><a class="logout" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+         </form></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -67,8 +75,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
             <a href="/admins">
               <i class="fa fa-dashboard"></i>
@@ -76,14 +84,14 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a href="/showAdmins">
-              <i class="fas fa-users"></i>
+            <a class="active" href="/showAdmins">
+              <i class="fa fa-user-secret"></i>
               <span>All admins</span>
               </a>
           </li>
           <li class="sub-menu">
             <a href="/users">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user"></i>
               <span>All Users</span>
               </a>
           </li>
@@ -99,18 +107,6 @@
               <span>Category</span>
               </a>
           </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
-          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -123,7 +119,7 @@
     <section id="main-content">
       <section class="wrapper">
         @if (session('status'))
-        <div style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
+        <div style="margin-left: 10rem" style="display: block; float: left; width: 100%" class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
@@ -247,7 +243,7 @@
                   <td> 
                     <a href="{{ route('users.edit',$admin->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
                     @can('isLastAdmin')
-                    {!! Form::open(['route' => ['users.destroy', $admin->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['users.destroy', $admin->id], 'method' => 'delete', 'style' => 'display: inline-block']) !!}
                     <button type="submit" class="btn btn-danger"id="delete">Delete</button>
                     {!! Form::close() !!}
                     @endcan

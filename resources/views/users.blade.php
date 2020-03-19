@@ -46,7 +46,15 @@
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="/login">Logout</a></li>
+          <li><a class="logout" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+         </form></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -74,22 +82,22 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
-        <h5 class="centered">{{ Auth::user()->name }}</h5>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
-            <a class="active" href="/admins">
+            <a href="/admins">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
               </a>
           </li>
           <li class="sub-menu">
             <a href="/showAdmins">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user-secret"></i>
               <span>All admins</span>
               </a>
           </li>
           <li class="sub-menu">
             <a class="active" href="/users">
-              <i class="fa fa-user-secret"></i>
+              <i class="fa fa-user"></i>
               <span>All Users</span>
               </a>
           </li>
@@ -103,12 +111,6 @@
             <a href="/categories">
               <i class="fa fa-book"></i>
               <span>Category</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
               </a>
           </li>
         </ul>
@@ -126,7 +128,7 @@
           <div class="create-table">
             @csrf
             @if (session('status'))
-            <div class="alert alert-success">
+            <div style="margin-left: 10rem" class="alert alert-success">
               {{ session('status') }}
             </div>
             @endif
@@ -159,6 +161,10 @@
                     <td> 
                       <a href=""><button type="button" class="btn btn-primary btn-sm active_deactive_users" id="{{$member->id }}"> {{ $member->isActive == 1 ? 'Active': 'Deactive' }}</button></a>
                       <a href="{{ route('users.edit',$member->id) }}"><button type="button" class="btn btn-primary"id="edit">Edit</button></a>
+                      {{Form::open(['method'  => 'DELETE', 'route' => ['users.destroy', $member->id], 'style' => 'display: inline-block'])}}
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      {{Form::close()}}
                     </td>
                   </tr>
                   @endforeach 

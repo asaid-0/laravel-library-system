@@ -207,11 +207,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /** delete admin */
+    /** delete user */
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('showAdmins')->with("status", "Admin deleted successfully");
+        return redirect()->back()->with("status", "User deleted successfully");
     }
 
 

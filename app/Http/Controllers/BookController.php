@@ -9,6 +9,11 @@ use App\Category;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -113,7 +118,7 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>['required', 'unique:books', 'max:50'],
+            'title'=>['required', 'max:50'],
             'copies'=>['required','numeric'],
             'price'=>['required','numeric'],
             'author'=>'required',
@@ -129,7 +134,7 @@ class BookController extends Controller
         $book->category_id= $request->get('category_id');
         $book->save();
 
-        return redirect('books')->with('alert','phone has been updated successfully');
+        return redirect('books')->with('alert','Book has been updated successfully');
     }
 
     /**

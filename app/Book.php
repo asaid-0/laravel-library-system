@@ -59,6 +59,7 @@ class Book extends Model
         parent::boot();
         static::deleting(function($book) { // before delete() method call this
             $book->BookComments()->detach();
+            //delete book pic here
         });
     }
 

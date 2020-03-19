@@ -123,4 +123,8 @@ class BookController extends Controller
         $books = $cat->books()->paginate(12);
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
+    public function deleteComment(Book $book){
+        $book->BookComments()->detach(Auth::id());
+        return back();
+    }
 }

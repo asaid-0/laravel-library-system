@@ -10,19 +10,19 @@
   <title>Book page</title>
 
   <!-- Favicons -->
-  <link href="Dashio/img/favicon.png" rel="icon">
-  <link href="Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/Dashio/img/favicon.png" rel="icon">
+  <link href="/Dashio/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Dashio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="/Dashio/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="Dashio/css/zabuto_calendar.css">
   <link rel="stylesheet" type="text/css" href="Dashio/lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
-  <link href="Dashio/css/style.css" rel="stylesheet">
-  <link href="Dashio/css/style-responsive.css" rel="stylesheet">
-  <script src="Dashio/lib/chart-master/Chart.js"></script>
+  <link href="/Dashio/css/style.css" rel="stylesheet">
+  <link href="/Dashio/css/style-responsive.css" rel="stylesheet">
+  <script src="/Dashio/lib/chart-master/Chart.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,15 @@
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">Logout</a></li>
+          <li><a class="logout" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+         </form></li>
         </ul>
       </div>
       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -67,18 +75,24 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href=""><i class="fas fa-user"></i></a></p>
-          <h5 class="centered">Admin name</h5>
+          <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
+          <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
-            <a class="active" href="/admins">
+            <a href="/admins">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
               </a>
           </li>
           <li class="sub-menu">
-            <a class="active" href="/users">
-              <i class="fas fa-users"></i>
-              <span>All categories</span>
+            <a href="/showAdmins">
+              <i class="fa fa-user-secret"></i>
+              <span>All admins</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="/users">
+              <i class="fa fa-user"></i>
+              <span>All Users</span>
               </a>
           </li>
           <li class="sub-menu">
@@ -88,22 +102,10 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a href="/categories">
+            <a class="active" href="/categories">
               <i class="fa fa-book"></i>
               <span>Category</span>
               </a>
-          </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -117,9 +119,8 @@
     <section id="main-content">
       <section class="wrapper">
           <div class="create-table">
-            <a href=""><button type="button" class="btn btn-primary" id="category">Add category</button></a>
             @if (session()->has('alert'))
-                <div class="alert alert-success">
+                <div style="margin-left: 10rem" class="alert alert-success">
                 {{session()->get('alert')}}
                 </div>
                 @endif
@@ -191,16 +192,9 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="input-group">
                 <div class="input-group-prepend">
           <div class="form-group">
-            <label for="exampleDropdownFormEmail2">categoryName</label>
-            <input type="text" class="form-control" id="exampleDropdownFormEmail2" name ='category_name' placeholder="categoryname">
+            <label for="exampleDropdownFormEmail2">Category Name</label>
+            <input type="text" class="form-control" id="exampleDropdownFormEmail2" name ='category_name' placeholder="category name">
           </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">category_id</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2"  name='id' placeholder="Category_id">
-          </div>
-         
-         
-         
           
              {{-- <label for="exampleFormControlFile1">Example file input</label>
               <input type="file" class="form-control-file" id="exampleFormControlFile1"> 
@@ -217,17 +211,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     </div>
   </div>
 </div>  
- 
-    <!--footer start-->
-    <footer class="category-footer">
-      <div class="text-center">
-        
-        <a href="index.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
-    <!--footer end-->
+
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="Dashio/lib/jquery/jquery.min.js"></script>

@@ -32,6 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin_books', 'AdminController@book')->name('books');
 
 Route::post('/userbooks/{book}', array('uses' => 'User\BookController@comment'));
+Route::post('/userbooks/{book}/delete', array('uses' => 'User\BookController@deleteComment'))->name('userbooks.delete');
+
 Route::get('/category/{cat}', array('uses' => 'User\BookController@list'))->name('category.index');
 Route::post('/addAdmin', array('uses' => 'AdminController@addAdmin'))->name('addAdmin');
 
@@ -56,9 +58,9 @@ Route::resource('categories', 'CategoryController');
 
 
 //
-Route::get('/admin_books', 'AdminController@book')->name('books');
-Route::get('/admin_categories', 'AdminController@category')->name('categories');
-Route::get('addCategory','AdminController@addingCategory');
+// Route::get('/admin_books', 'AdminController@book')->name('books');
+// Route::get('/admin_categories', 'AdminController@category')->name('categories');
+// Route::get('addCategory','AdminController@addingCategory');
 
 //
 

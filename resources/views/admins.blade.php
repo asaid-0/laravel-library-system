@@ -41,7 +41,15 @@
       <!--logo end-->
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">Logout</a></li>
+          <li><a class="logout" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+         </form></li>
         </ul>
       </div>
     </header>
@@ -57,14 +65,14 @@
           <p class="centered"><a href=""><i class="fa fa-user"></i></a></p>
           <h5 class="centered">{{ Auth::user()->name }}</h5>
           <li class="mt">
-            <a href="/admins">
+            <a class="active" href="/admins">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
               </a>
           </li>
           <li class="sub-menu">
             <a href="/showAdmins">
-              <i class="fas fa-users"></i>
+              <i class="fa fa-user-secret"></i>
               <span>All admins</span>
               </a>
           </li>
@@ -85,18 +93,6 @@
               <i class="fa fa-book"></i>
               <span>Category</span>
               </a>
-          </li>
-          <li class="sub-menu">
-            <a href="">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -131,7 +127,7 @@
                   </div>
                   <div class="chart mt">
                 </div>
-                    <h1 class="counter-count"> {{ \App\Users::count() }} </h1>
+                    <h1 class="counter-count"> {{ \App\User::count() }} </h1>
                 </div>
                 <!--  /darkblue panel -->
               </div>
@@ -144,7 +140,7 @@
                   </div>
                   <div class="chart mt">
                   </div>
-                  <h1 class="counter-count">{{ \App\Users::where('isAdmin', 1)->count() }}</h1>
+                  <h1 class="counter-count">{{ \App\User::where('isAdmin', 1)->count() }}</h1>
                 </div>
               </div>
           </div>
