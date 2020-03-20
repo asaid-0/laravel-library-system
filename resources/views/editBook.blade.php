@@ -141,6 +141,12 @@
                     <label for="first_name">copies:</label>
                     <input type="text" class="form-control" name="copies" value={{ $book->copies }} />
                 </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="margin-top: 0" name='description'>{{ $book->description }}</textarea>
+                </div>
+
                 <div class="form-group">
     
                     <label for="price">price:</label>

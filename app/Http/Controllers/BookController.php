@@ -54,11 +54,12 @@ class BookController extends Controller
     {
 
         $request->validate([
-            'title' => ['required', 'unique:books', 'max:50'],
+            // 'title' => ['required', 'unique:books', 'max:50'],
             'copies' => ['required', 'numeric'],
             'price' => ['required', 'numeric'],
             'author' => 'required',
             'category_id' => ['required', 'numeric'],
+            'description' => ['required', 'min:3', 'max:1024'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
         ]);
@@ -83,6 +84,7 @@ class BookController extends Controller
         $book->pic_path = $input['imagename'] ;
         $book->title = $request->title;
         $book->copies = $request->copies;
+        $book->description = $request->description;
         $book->price = $request->price;
         $book->author = $request->author;
         $book->category_id = $request->category_id;
@@ -131,6 +133,7 @@ class BookController extends Controller
             'title' => ['required', 'max:50'],
             'copies' => ['required', 'numeric'],
             'price' => ['required', 'numeric'],
+            'description' => ['required', 'min:3', 'max:1024'],
             'author' => 'required',
             'category_id' => ['required', 'numeric'],
 
@@ -140,6 +143,7 @@ class BookController extends Controller
         $book->category_id = $request->get('id');
         $book->title = $request->get('title');
         $book->copies = $request->copies;
+        $book->description = $request->description;
         $book->author = $request->author;
         $book->price = $request->get('price');
         $book->category_id = $request->get('category_id');

@@ -132,7 +132,7 @@
                             
 
                             <div>
-                                <p class="book-sample"><a href="javascript:void(0);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique error maxime, adipisci nihil saepe laudantium in quos corporis aliquid excepturi quisquam at culpa totam nemo perferendis, eaque harum consequuntur numquam?</a></p>
+                                <p class="book-sample"><a href="javascript:void(0);">{!! $book->description !!}</a></p>
                             </div>
 
 

@@ -239,6 +239,13 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <input type="text" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2" name='copies'placeholder="Number of copies">
             </div>
           </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="margin-top: 0" name='description'></textarea>
+            </div>
+          </div>
+
          
           <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Picture</label>

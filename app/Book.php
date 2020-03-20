@@ -43,7 +43,7 @@ class Book extends Model
         return max($this->copies - $this->leasedBy()->where('leased_until','>',now())->count(), 0);
     }
     public function getRelatedBooks(){
-        return self::WHERE('title', 'REGEXP', str_replace(' ', '|', $this->title))->UNION(self::WHERE('category_id', $this->category_id))->limit(10)->get();
+        return self::WHERE('title', 'REGEXP', str_replace(' ', '|', $this->title))->UNION(self::WHERE('category_id', $this->category_id))->WHERE('id', '<>', $this->id)->limit(10)->get();
     }
     public function isLeaseable(){
         return !$this->leasedBy()->where('user_id',Auth::id())->where('leased_until','>',now())->count();
