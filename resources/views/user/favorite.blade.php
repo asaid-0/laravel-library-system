@@ -195,7 +195,9 @@
 															<h3><a href="/userbooks/{{$book->id}}" data-toggle="tooltip" data-placement="top" title="{!! $book->title !!}">{!! Str::limit($book->title, 24) !!}</a></h3>
 														</div>
 														<span class="tg-bookwriter">By: <a href="javascript:void(0);">{!! $book->author !!}</a></span>
-														<span class="tg-stars"><span></span></span>
+														@for ($i = 0; $i < 5; ++$i)
+															<i style="color: #fcd01e" class="fa fa-star{{ $book->rating()<=$i?'-o':'' }}" aria-hidden="true"></i>
+														@endfor
 														<span class="tg-bookprice">
 															<ins>${!! $book->price !!}</ins>
 														</span>
