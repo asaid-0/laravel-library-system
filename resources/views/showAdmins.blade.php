@@ -239,6 +239,9 @@
               </tbody>
           </table>
         </div>
+        <div class="col-12 d-fles justify-content-center pt-4" style="margin-left:50% ;">
+          {{$admins->links()}}
+        </div>
         <!-- /row -->
       </section>
     </section>

@@ -127,12 +127,14 @@
                 <div class="form-group">
     
                   <label for="category">Category:</label>
-                  <input type="text" class="form-control" name="category_id" value={{ $book->category_id }} />
+              {!! Form::select('category_id', \App\Category::pluck('category_name', 'id') , $book->category_id  ,['placeholder' => 'Select categories...', 'class' => 'form-control', 'style' => 'margin-top: 0', 'required' => 'required'])!!}
+
+                  {{-- <input type="text" class="form-control" name="category_id" value={{ $book->category_id }} /> --}}
               </div>
                 <div class="form-group">
     
                     <label for="Author">Author</label>
-                    <input type="text" class="form-control" name="author" value={{ $book->auther}} />
+                    <input type="text" class="form-control" name="author" value={{ $book->author}} />
                 </div>
                 <div class="form-group">
     

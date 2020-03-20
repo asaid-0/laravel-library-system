@@ -243,7 +243,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="exampleDropdownFormPassword2">Picture</label>
             <div class="col-sm-10">
-              <input type="file" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2"name='avater' placeholder="book">
+              <input type="file" class="form-control" style="margin-top: 0" id="exampleDropdownFormPassword2"name='image' placeholder="book">
             </div>
           </div>
              {{-- <label for="exampleFormControlFile1">Example file input</label>
