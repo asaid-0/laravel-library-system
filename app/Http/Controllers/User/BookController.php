@@ -35,7 +35,7 @@ class BookController extends Controller
              'sort'=>request('sort'),
          ]); 
         // $bookLeased= UserLeasedBook::all()->where('leased_until','>',now());
-        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->get();
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
@@ -101,7 +101,7 @@ class BookController extends Controller
         ]);
         $search= $request->search;
         $books= Book::where('title','like','%'.$search.'%')->orWhere('author','like','%'.$search.'%')->paginate(12)->appends(request()->except('page'));;
-        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->get();
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
 
@@ -126,7 +126,7 @@ class BookController extends Controller
     }
     public function list(Category $cat)
     {
-        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
+        $categories = Category::withCount('books')->orderBy('books_count', 'desc')->get();
         $books = $cat->books();
         if (request()->has('sort')){
             $books = $cat->books()->withCount(['BookComments as average_rating' => function($query) {
