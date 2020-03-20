@@ -160,8 +160,8 @@
 
 														
 														<div class="tg-bookimg">
-															<div class="tg-frontcover"><img src="/images/books/img-04.jpg" alt="image description"></div>
-															<div class="tg-backcover"><img src="/images/books/img-04.jpg" alt="image description"></div>
+															<div class="tg-frontcover"><img style="min-height: 248px; background: #e3e3e3" src="/bookimage/{{$book->pic_path}}" onerror="this.onerror=null;this.src='/images/books/img-04.jpg';" alt="image description"></div>
+															<div class="tg-backcover"><img style="min-height: 248px; background: #e3e3e3" src="/bookimage/{{$book->pic_path}}" onerror="this.onerror=null;this.src='/images/books/img-04.jpg';" alt="image description"></div>
 														</div>
 														@if ($book->isFavorite())
 															{!! Form::open(['route' => ['favorite.destroy','favorite' => $book->id],'method' => 'delete']) !!}
