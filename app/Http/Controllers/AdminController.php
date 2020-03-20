@@ -36,7 +36,7 @@ class AdminController extends Controller
     }
     public function adminsPage()
     {
-        $admins=User::where('isAdmin',1)->paginate(3);
+        $admins=User::where('isAdmin',1)->paginate(10);
         return view('showAdmins',['admins' => $admins]) ;
     }
 
@@ -86,7 +86,7 @@ class AdminController extends Controller
     // }
     public function index()
     {
-        $users = User::paginate(3);
+        $users = User::where('isAdmin',0)->paginate(10);
         return view('users',compact('users') );
     }
 
