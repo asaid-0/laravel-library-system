@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
 use App\UserLeasedBook;
+use DB;
+
 class BookController extends Controller
 {
 
@@ -24,7 +26,9 @@ class BookController extends Controller
         // $books = Book::paginate(12);
         $books = new Book;
         if (request()->has('sort')){
-            $books = $books->orderBy(request('sort'));
+            $books = Book::withCount(['BookComments as average_rating' => function($query) {
+                $query->select(DB::raw('coalesce(avg(rank),0)'));
+            }])->orderByDesc(request('sort'));
         }
 
         $books= $books->paginate(12)->appends([
@@ -125,7 +129,9 @@ class BookController extends Controller
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
         $books = $cat->books();
         if (request()->has('sort')){
-            $books = $cat->books()->orderBy(request('sort'));
+            $books = $cat->books()->withCount(['BookComments as average_rating' => function($query) {
+                $query->select(DB::raw('coalesce(avg(rank),0)'));
+            }])->orderByDesc(request('sort'));
         }
         $books = $books->paginate(12)->appends([
             'sort'=>request('sort'),

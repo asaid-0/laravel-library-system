@@ -129,8 +129,8 @@
 															<span class="tg-select">
 																<select onchange="window.location.replace(this.value);">
 																<option hidden disabled selected value>Sort</option>
-																<option value={{ route(Route::currentRouteName(), ['cat' => Request::route('cat'), 'sort'=>"title"]) }}>Title</option>
-																<option value={{ route(Route::currentRouteName(), ['cat' => Request::route('cat'), 'sort'=>"author"]) }}>Author</option>
+																<option value={{ route(Route::currentRouteName(), ['cat' => Request::route('cat'), 'sort'=>"created_at"]) }}>Latest</option>
+																<option value={{ route(Route::currentRouteName(), ['cat' => Request::route('cat'), 'sort'=>"average_rating"]) }}>Rate</option>
 																<option value={{ route(Route::currentRouteName(), ['cat' => Request::route('cat')])  }}>None</option>
 																</select>
 															</span>
