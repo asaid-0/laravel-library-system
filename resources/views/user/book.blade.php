@@ -105,7 +105,7 @@
             <div class="container">
                 <div class="row book-details">
                     <div style="display: inline-block; float: left">
-                        <img src="/images/books/img-04.jpg" alt="title" />
+                        <img src="/bookimage/{{$book->pic_path}}" onerror="this.onerror=null;this.src='/images/books/img-04.jpg';" alt="title" />
 
                     </div>
                     <div style="display: inline-block; width: 50%; padding: 0 2rem">
@@ -222,6 +222,11 @@
                     <div class="post-container">
                         
                         <div class="text-right">
+                            <div>
+                                @foreach ($errors->all() as $error)
+                                <li style="text-align: left" class="alert alert-danger">{{$error}}</li>            
+                                @endforeach
+                            </div>
                             @if ($book->canComment())
                                 <a class="btn btn-primary" href="#reviews-anchor" id="open-review-box">Leave Comment</a>
                             @else
@@ -304,8 +309,8 @@
                                     </div>
                                 </div>
                                 <div class="clear"></div>
+                                <p style="overflow-wrap: break-word;" class="post-content">{!! $comment->pivot->comment !!}</p>
                             </div>
-                            <p class="post-content">{!! $comment->pivot->comment !!}</p>
                         </div>
                     </div>
                 @empty
@@ -327,7 +332,7 @@
                 <li class="item">
                     <div class="col-md-12">
                         <div class="col-md-4 image-container">
-                        <img src="/images/books/img-02.jpg" alt="{!! $related->title !!}" />
+                        <img src="/bookimage/{{$related->pic_path}}" onerror="this.onerror=null;this.src='/images/books/img-04.jpg';" alt="{!! $related->title !!}" />
                         </div>
                         
                         <div class="col-md-8 book-info">

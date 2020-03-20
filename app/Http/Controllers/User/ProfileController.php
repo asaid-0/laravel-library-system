@@ -27,6 +27,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->userName = $request->userName;
         $user->email = $request->email;
+        $user->save();
         return back()->with('status', 'Profile has been updated successfuly');
     }
 }

@@ -113,6 +113,9 @@ class BookController extends Controller
     }
     public function comment(Request $request, Book $book){
         if($book->canComment()){
+            $request->validate([
+                'comment'=>'required|min:3|max:1024'
+                ]);
             $book->BookComments()->attach(Auth::id(), ['comment' => $request->comment, 'rank' => $request->rating]);
         }
         return back();
@@ -120,7 +123,13 @@ class BookController extends Controller
     public function list(Category $cat)
     {
         $categories = Category::withCount('books')->orderBy('books_count', 'desc')->limit(10)->get();
-        $books = $cat->books()->paginate(12);
+        $books = $cat->books();
+        if (request()->has('sort')){
+            $books = $cat->books()->orderBy(request('sort'));
+        }
+        $books = $books->paginate(12)->appends([
+            'sort'=>request('sort'),
+        ]);
         return view('user.index', ['books' => $books, 'categories' => $categories]);
     }
     public function deleteComment(Book $book){
